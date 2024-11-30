@@ -1,0 +1,16 @@
+
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<h1 style="color: slategray;">Pagina de formulario</h1>
+
+<form action="POST">
+    {{form.as_p}}
+    <button>
+        Save
+    </button>
+</form>
+
+
+{% endblock%}

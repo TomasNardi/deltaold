@@ -1,0 +1,23 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<h1> Seccion de actualizacion de tareas</h1>
+
+<form method="POST">
+    {%csrf_token %}
+    {{form.as_p}}
+
+    <button>
+        Actualizar
+    </button>
+</form>
+
+<form action="{% url 'delete' task.id %}" method="post">
+    {%csrf_token%}
+<button>
+    Borrar
+</button>
+
+</form>
+
+{% endblock %}

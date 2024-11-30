@@ -1,0 +1,16 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<h1 style="color: rgba(0, 0, 0, 0.83);">Seccion para crear tarea</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>
+        Save
+    </button>
+</form>
+
+
+{% endblock%}
