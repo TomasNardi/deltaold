@@ -40,3 +40,14 @@ class Productos(models.Model):
 
     def __str__(self):
         return self.titulo
+    
+    
+class Eventos(models.Model):
+    titulo = models.CharField(max_length=255)
+    direccion = models.CharField(max_length=255)
+    descripcion = models.TextField()
+    link_entradas = models.URLField(max_length=500, blank=True, null=True)
+    incluye_entradas = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.titulo

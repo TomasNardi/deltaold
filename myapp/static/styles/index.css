@@ -41,30 +41,6 @@ h2 {
   font-size: 28px;
 }
 
-/* Estilo del enlace */
-.instagram-link {
-  display: inline-block;
-  width: 2.2em;
-  height: 2.2em;
-  background-color: #e1306c;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  text-decoration: none;
-}
-
-.instagram-link:hover {
-  background-color: #c13584;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
-
-.instagram-link i {
-  font-size: 1.6em;
-}
 
 /* Definir la animación de desplazamiento */
 @keyframes marquee {
@@ -79,7 +55,8 @@ h2 {
 .marquee-container {
   width: 100%; /* Ancho completo */
   overflow: hidden; /* Oculta el contenido que se desborda */
-  background-color: #aa09ca; /* Fondo claro */
+  background: rgb(108,16,61);
+    background: linear-gradient(50deg, rgba(108,16,61,1) 10%, rgba(186,45,178,1) 42%, rgba(255,0,194,1) 81%);
   padding: 5px; /* Espaciado interno */
 
 }

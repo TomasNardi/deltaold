@@ -2,20 +2,22 @@
 {% extends "layouts/base.html" %}
 
 {% block content %}
-<div class="container my-5">
-    <h1 class="text-center mb-4">Productos Disponibles</h1>
+<div class="container">
+    <div class="producto_disponibles">
+        <h1 class="text-center" style="font-size: 3em; color: aliceblue; text-shadow: 2px 2px black;">¡ Productos Disponibles !</h1>
+    </div>
     <div class="row row-cols-1 row-cols-md-4 g-4">
         {% for producto in productos %}
             {% if producto.stock %}
             <div class="col">
                 <div class="card h-100">
                     <div class="card-body text-center" style="background-color: rgba(145, 145, 145, 0.178);
-                    border: solid 0.2px rgba(0, 0, 0, 0.568)">
+                    border: solid 0.2px rgba(0, 0, 0, 0.568); font-size: 0.8em;">
                         <h2 class="card-title">{{ producto.titulo }}</h2>
-                        <img src="{{ producto.imagen_url }}" alt="Imagen de {{ producto.titulo }}" style="width: 200px; height: 300px; object-fit: cover;">
-
-                        <p>{{ producto.descripcion }}</p>
-                        <p class="text-primary fw-bold">$ {{ producto.precio }}</p>
+                        <img src="{{ producto.imagen_url }}" alt="Imagen de {{ producto.titulo }}" style="margin-top: 1em; ;max-width: 100%; max-height: 100%; object-fit: contain;">
+                        <div class="mt-2">
+                            <p class="text-primary fw-bold" style="font-size: 2em;">$ {{ producto.precio }} $</p>
+                        </div>
                         <a href="https://wa.me/541152203378" class="btn btn-success">Comprar</a> 
                     </div>
                 </div>

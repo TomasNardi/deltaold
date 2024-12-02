@@ -1,10 +1,14 @@
 from django.contrib import admin
-from .models import Project , Task 
+from .models import Productos , Eventos
 
-class TaskAdmin(admin.ModelAdmin):
-    readonly_fields = ("creado",) 
+    
+class ProductosAdmin(admin.ModelAdmin):
+    pass
+
+class EventosAdmin(admin.ModelAdmin):
+    pass
 
 # Register your models here.
-admin.site.register(Project)    
-admin.site.register(Task ,TaskAdmin)
+admin.site.register(Productos ,ProductosAdmin)
+admin.site.register(Eventos ,EventosAdmin)
 

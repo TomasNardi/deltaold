@@ -8,19 +8,21 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
 
-<div class="container mt-4">
-    <h1>Ubicación de la Delta Feria - 30/11</h1>
-    <p><b>Dirección: </b>Centro Cultural Matienzo, Juan B Justo 2959, CABA</p>
+<div class="container mt-3">
+    <h1 style="font-size: 3em; background: rgba(0, 0, 0, 0.938); color: aliceblue; padding: 0.3em;"> Delta Feria - 30/11</h1>
+    <p class="mt-4"><b>Dirección: </b>Centro Cultural Matienzo, Juan B Justo 2959, CABA.</p>
+
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-6 mt-3">
             <!-- Mapa de Google -->
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.045158592604!2d-58.452365684782735!3d-34.58836658046113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb584f5530dfd%3A0xa7cb9f49d62c7a5a!2sAv.%20Juan%20B.%20Justo%202959%2C%20C1414CHK%20CABA%2C%20Argentina!5e0!3m2!1ses!2sar!4v1698765432109!5m2!1ses!2sar"
-                width="500" height="400" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3282.045158592604!2d-58.452365684782735!3d-34.58836658046113!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb584f5530dfd%3A0xa7cb9f49d62c7a5a!2sAv.%20Juan%20B.%20Justo%202959%2C%20C1414CHK%20CABA%2C%20Argentina!5e0!3m2!1ses!2sar!4v1698765432109!5m2!1ses!2sar"
+                    style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 mt-4">
             La <b>Delta Feria</b> es uno de los eventos más grandes y emocionantes dedicados a los
             fanáticos de juego de cartas coleccionables como de <b>Pokémon TCG, One Pice y Lorcana</b>, entre otros.
             Reuniendo a los mejores vendedores,
@@ -36,27 +38,14 @@
 
             ¡Prepárate para vivir una experiencia única donde la magia de Pokémon cobra vida en cada esquina de la
             feria!
-            <div class="container text-center mt-4">
+            <div class="container text-center mt-4 mb-2">
                 <a href="https://www.passline.com/eventos/deltaferia-0112?fbclid=PAY2xjawG2muZleHRuA2FlbQIxMQABplhKyg6-tdDT1acj6I7OOootF8HiydULDE8qbK2EFU6QmrR-qSGWuDJS9w_aem_8dnJrDRUvCIUyBoYIPCMUg"
                     class="btn btn-primary" style="background-color: #5f20d4; border-color: #6e42c1c9;">
                     <i class="fa fa-ticket " aria-hidden="true"></i>
                     <b> Comprar Entradas Anticipadas</b>
                 </a>
             </div>
-            <!-- Enlace a JS de Bootstrap (opcional para funcionalidades avanzadas) -->
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-            </body>
         </div>
     </div>
-</div>
-<div class="container">
-    <div class="container  mt-5">
-        <div class="alert alert-info d-inline-flex align-items-center" role="alert">
-            <i class="fa fa-wheelchair me-1" aria-hidden="true"></i>
-            <span>Este evento es accesible para personas con movilidad reducida</span>
-        </div>
-    </div>
-    <!-- Enlace a JS de Bootstrap (opcional para funcionalidades avanzadas) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </div>
 {% endblock %}
