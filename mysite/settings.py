@@ -85,6 +85,7 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 
 # Database documentation https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
 DATABASES = {
     "default": dj_database_url.config(
         # Replace this value with your local database's connection string.
@@ -102,6 +103,7 @@ DATABASES = {
     }
 }
 """
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -149,7 +151,7 @@ if not DEBUG:
 
 
 # Esto solo debe ser activado si estamos haciendo el colect statics! si vamos a deployar debemos activar el codigo comentado por encima.
-# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+#STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 LOGIN_URL = "login"
 

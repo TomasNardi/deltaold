@@ -49,3 +49,40 @@ body {
     background: rgb(108,16,61);
     background: linear-gradient(50deg, rgba(108,16,61,1) 10%, rgba(186,45,178,1) 42%, rgba(255,0,194,1) 81%);
 }
+
+
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+
+.image-text {
+    position: absolute;
+    top: 50%; /* Centrado vertical */
+    left: 50%; /* Centrado horizontal */
+    transform: translate(-50%, -50%); /* Ajusta la posición para centrar el elemento completamente */
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-weight: bold; /* Texto en negrita */
+    font-style: italic; /* Texto en cursiva */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 10;
+}
+
+/* Establecer un tamaño de fuente más grande para pantallas grandes */
+@media (min-width: 1200px) {
+    .image-text {
+        font-size: 5vw; /* Aumenta el tamaño de fuente en pantallas grandes */
+    }
+}
+
+/* Para pantallas medianas o pequeñas, puedes reducir el tamaño */
+@media (max-width: 767px) {
+    .image-text {
+        font-size: 2em; /* Ajuste a un tamaño más pequeño para pantallas pequeñas */
+    }
+}
+
+
