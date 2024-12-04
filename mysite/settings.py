@@ -27,6 +27,9 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default="TestDjango1996")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "RENDER" not in os.environ
 
+# Debug en true para hacer el collect static, sino debemos descomentar la linea de arriba.
+#DEBUG = True
+
 ALLOWED_HOSTS = []
 
 # Agrego la linea para produccion! -> render.com
@@ -82,21 +85,21 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 
 # Database documentation https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-"""DATABASES = {
+DATABASES = {
     "default": dj_database_url.config(
         # Replace this value with your local database's connection string.
         default="postgresql://postgres:postgres@localhost:5432/mysite",
         conn_max_age=600,
     )
-}"""
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
 }
+
+"""
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
+}"""
 
 
 # Password validation
@@ -141,7 +144,10 @@ if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
     # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
     # and renames the files with unique names for each version to support long-term caching
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage
+
+# Esto solo debe ser activado si estamos haciendo el colect statics! si vamos a deployar debemos activar el codigo comentado por encima.
+#STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 LOGIN_URL = "login"
 

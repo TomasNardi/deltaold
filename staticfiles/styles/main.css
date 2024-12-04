@@ -1,0 +1,51 @@
+header{
+    background-color: rgba(38, 51, 54, 0.226);
+    max-height: 5em;
+}
+
+
+body { 
+    background-color: rgba(131, 15, 177, 0.342);
+    
+}
+
+/* Establece el z-index para el navbar */
+.navbar {
+    position: fixed; /* Fija el navbar en la parte superior */
+    top: 0;
+    left: 0;
+    width: 100%; /* Asegura que ocupe toda la pantalla */
+    z-index: 1050; /* Asegura que el navbar quede encima de otros elementos */
+}
+
+/* Para asegurar que la versión desplegada del navbar (cuando se hace toggle) esté por encima */
+.navbar-collapse {
+    z-index: 1060; /* Ajuste para la versión desplegada */
+}
+
+
+/* Funcionalida de google maps para eventos.html *//* Contenedor del mapa */
+.map-container {
+    position: relative;
+    width: 100%; /* Hace que el mapa ocupe el 100% del contenedor */
+    padding-bottom: 56.25%; /* Mantiene la relación de aspecto 16:9 (altura relativa al ancho) */
+    height: 0; /* Anula la altura del contenedor */
+    overflow: hidden;
+}
+
+/* Ajusta el iframe para que ocupe el 100% del contenedor */
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Stock - productos disponibles */
+.producto_disponibles {
+    margin: 1em 0em 1em 0em ;
+    padding: 1em;
+    background: rgb(108,16,61);
+    background: linear-gradient(50deg, rgba(108,16,61,1) 10%, rgba(186,45,178,1) 42%, rgba(255,0,194,1) 81%);
+}
