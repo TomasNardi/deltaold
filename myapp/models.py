@@ -17,7 +17,7 @@ class Task(models.Model):
     done = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     fecha = models.DateTimeField(null=True)
-    creado = models.DateTimeField(auto_now_add=True)
+    creado = models.DateTimeField(auto_now_add=False)
 
     def __str__(self):
         return (
