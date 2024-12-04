@@ -118,4 +118,14 @@ def borrar_tarea(request, id):
             return redirect('index')
         
         
-        
+def create_superuser(request):
+    username = 'admindeltaold'
+    password = 'admin1999'  
+    email = 'admin@example.com'  
+    
+    # Crear el superusuario si no existe
+    if not User.objects.filter(username=username).exists():
+        User.objects.create_superuser(username=username, email=email, password=password)
+        return HttpResponse("Superusuario creado con éxito.")
+    else:
+        return HttpResponse("El superusuario ya existe.")
