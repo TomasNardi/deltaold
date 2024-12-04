@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default="TestDjango1996")
 DEBUG = "RENDER" not in os.environ
 
 # Debug en true para hacer el collect static, sino debemos descomentar la linea de arriba.
-#DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -144,10 +144,11 @@ if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
     # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
     # and renames the files with unique names for each version to support long-term caching
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 # Esto solo debe ser activado si estamos haciendo el colect statics! si vamos a deployar debemos activar el codigo comentado por encima.
-#STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+# STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 LOGIN_URL = "login"
 
