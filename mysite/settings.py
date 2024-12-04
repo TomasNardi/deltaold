@@ -25,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY", default="TestDjango1996")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = "RENDER" not in os.environ
+# DEBUG = "RENDER" not in os.environ
 
 # Debug en true para hacer el collect static, sino debemos descomentar la linea de arriba.
-# DEBUG = True
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -86,7 +86,7 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 
 # Database documentation https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-
+"""
 DATABASES = {
     "default": dj_database_url.config(
         # Replace this value with your local database's connection string.
@@ -94,17 +94,17 @@ DATABASES = {
         conn_max_age=600,
     )
 }
-
-
-
 """
+
+
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-"""
+
 
 
 

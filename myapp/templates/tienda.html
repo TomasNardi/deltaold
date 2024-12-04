@@ -12,10 +12,15 @@
             {% if producto.stock %}
             <div class="col-6 col-md-4 col-lg-3">
                 <div class="card h-100">
-                    <div class="card-body text-center" style="background-color: rgba(145, 145, 145, 0.178);
+                    <div class="card-body text-center image-container" style="background-color: rgba(145, 145, 145, 0.178);
                     border: solid 0.2px rgba(0, 0, 0, 0.568); font-size: 0.8em;">
                         <h2 class="card-title" style="font-size: 1.8em;">{{ producto.titulo }}</h2>
-                        <img src="{{ producto.imagen_url }}" alt="Imagen de {{ producto.titulo }}" style="margin-top: 1em; max-width: 100%; max-height: 100%; object-fit: contain;">
+                        <!-- Imagen con efecto hover -->
+                        <img 
+                            src="{{ producto.imagen_url }}" 
+                            alt="Imagen de {{ producto.titulo }}" 
+                            class="product-image"
+                            style="margin-top: 1em; max-width: 100%; max-height: 100%; object-fit: contain;">
                         <div class="mt-2">
                             <p class="fw-bold" style="font-size: 1.3em;">$ {{ producto.precio|floatformat:0|intcomma }}</p>
                         </div>
