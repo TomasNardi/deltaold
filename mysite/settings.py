@@ -24,11 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY", default="TestDjango1996")
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# Produccion
 DEBUG = "RENDER" not in os.environ
 
-# Debug en true para hacer el collect static, sino debemos descomentar la linea de arriba.
-#DEBUG = True
+# Desarrollo
+# DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -103,7 +103,6 @@ DATABASES = {
     }
 }
 """
-
 
 
 # Password validation
