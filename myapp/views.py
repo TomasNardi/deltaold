@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse , JsonResponse
 from django.shortcuts import get_object_or_404
 #Importo las tablas para manejar los datos que se encuentran ahi.
-from .models import Project , Task, Productos
+from .models import Task, Productos , Eventos
 #Imoportamos la funcion de renderizado de la web. 
 from django.shortcuts import render , redirect
 from .forms import CreateNewTasks 
@@ -45,14 +45,22 @@ def crear_usuario(request):
             
 #@login_required
 def evento(request):
-    return render(request, 'eventos.html')
+    eventos = Eventos.objects.all()
+    return render(request, 'eventos.html', {'eventos' : eventos})
     
 def productos(request):
     productos = Productos.objects.all()
     return render(request, "tienda.html", {'productos' : productos})
 
+def single(request):
+    productos = Productos.objects.all()
+    return render(request, "tiendas/singles.html", {'productos' : productos})
 
-def tasks(request, id):
+def sellado(request):
+    productos = Productos.objects.all()
+    return render(request, "tiendas/sellados.html", {'productos' : productos})
+
+"""def tasks(request, id):
     task = get_object_or_404(Task , id = id)
     return render(request , 'tasks/tasks.html', {'task' : task})
 
@@ -115,7 +123,7 @@ def borrar_tarea(request, id):
             print(f"Hago delete de la tarea con el siguiente id -> {id}")
             #Funcion delete de Django, task coma el valor de id = id.
             task.delete() 
-            return redirect('index')
+            return redirect('index')"""
         
         
 def create_superuser(request):

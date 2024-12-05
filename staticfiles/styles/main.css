@@ -85,4 +85,19 @@ body {
     }
 }
 
+/* Contenedor para las imágenes */
+.image-container {
+    overflow: hidden; /* Evitar que la imagen se salga del contenedor */
+    position: relative;
+}
 
+/* Imagen del producto */
+.product-image {
+    transition: transform 1s ease, box-shadow 0.3s ease; /* Transición suave */
+}
+
+/* Efecto al pasar el cursor (hover) */
+.product-image:hover {
+    transform: scale(0.9); /* Aumenta el tamaño al 120% */
+    box-shadow: 0 9px 19px rgba(0, 0, 0, 0.3); /* Agrega sombra para dar profundidad */
+}

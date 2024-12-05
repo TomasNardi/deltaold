@@ -36,6 +36,8 @@ class Productos(models.Model):
     descripcion = models.TextField()
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     imagen_url = models.URLField(max_length=500, blank=True, null=True)
+    sellado = models.BooleanField(default=False)
+    single = models.BooleanField(default=False)
     stock = models.BooleanField(default=False)
 
     def __str__(self):
@@ -45,6 +47,8 @@ class Productos(models.Model):
 class Eventos(models.Model):
     titulo = models.CharField(max_length=255)
     direccion = models.CharField(max_length=255)
+    horario = models.CharField(max_length=255)
+    google_maps = models.CharField(max_length=255)
     descripcion = models.TextField()
     link_entradas = models.URLField(max_length=500, blank=True, null=True)
     incluye_entradas = models.BooleanField(default=False)

@@ -51,6 +51,7 @@ h2 {
       transform: translateX(-100%); /* Termina a la izquierda */
     }
   }
+  
 /* Estilo para el cartel pasante */
 .marquee-container {
   width: 100%; /* Ancho completo */
@@ -68,3 +69,37 @@ h2 {
   color: #ffffff; /* Color del texto */
 }
 
+/* Estilo para la imagen con cartel encima */
+.image-venta{
+  position: relative;
+  width: 100%;
+  margin-bottom: 0.7em;
+}
+
+.image-venta img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px; /* Añadir bordes redondeados */
+}
+
+.image-venta .image-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;  /* Texto blanco */
+  font-size: 3em;  /* Tamaño por defecto */
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);  /* Sombra de texto para mejorar visibilidad */
+  background-color: rgb(0, 0, 0);  /* Fondo negro */
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+/* Media query para pantallas más pequeñas, como teléfonos */
+@media (max-width: 768px) {
+  .image-venta .image-text {
+    font-size: 0.7em;  /* Tamaño de texto más pequeño en pantallas pequeñas */
+  }
+}
