@@ -25,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY", default="TestDjango1996")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = "RENDER" not in os.environ
+DEBUG = "RENDER" not in os.environ
 
 # Debug en true para hacer el collect static, sino debemos descomentar la linea de arriba.
-DEBUG = True
+#DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -154,7 +154,7 @@ if not DEBUG:
 # Esto solo debe ser activado si estamos haciendo el colect statics! si vamos a deployar debemos activar el codigo comentado por encima.
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-#LOGIN_URL = "login"
+LOGIN_URL = "login"
 
 
 # Default primary key field type
