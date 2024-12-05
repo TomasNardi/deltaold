@@ -70,17 +70,18 @@ h2 {
 }
 
 /* Estilo para la imagen con cartel encima */
-.image-venta{
+.image-venta {
   position: relative;
   width: 100%;
   margin-bottom: 0.7em;
+  overflow: hidden; /* Asegurar que las chispas no se salgan del contenedor */
 }
 
 .image-venta img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 8px; /* Añadir bordes redondeados */
+  border-radius: 8px; /* Bordes redondeados */
 }
 
 .image-venta .image-text {
@@ -88,18 +89,55 @@ h2 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;  /* Texto blanco */
-  font-size: 3em;  /* Tamaño por defecto */
+  color: white; /* Texto blanco */
+  font-size: 3em; /* Tamaño por defecto */
   font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);  /* Sombra de texto para mejorar visibilidad */
-  background-color: rgb(0, 0, 0);  /* Fondo negro */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra de texto */
+  background-color: rgb(0, 0, 0); /* Fondo negro */
   padding: 10px 20px;
   border-radius: 8px;
 }
 
-/* Media query para pantallas más pequeñas, como teléfonos */
+/* Efecto de múltiples chispas */
+.image-venta:hover .spark {
+  animation: spark-animation 0.8s linear infinite;
+  opacity: 1;
+}
+
+/* Chispas */
+.spark {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: yellow; /* Color de las chispas */
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* Animación de las chispas */
+@keyframes spark-animation {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+    box-shadow: 0 0 5px 3px rgba(255, 255, 0, 0.8);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translate(30px, -30px) scale(1.5);
+    box-shadow: 0 0 15px 8px rgba(255, 255, 0, 0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(60px, -60px) scale(2);
+    box-shadow: 0 0 0 0 rgba(255, 255, 0, 0);
+  }
+}
+
+/* Media query para pantallas pequeñas */
 @media (max-width: 768px) {
   .image-venta .image-text {
-    font-size: 0.8em;  /* Tamaño de texto más pequeño en pantallas pequeñas */
+    font-size: 0.8em; /* Reducir el tamaño del texto */
   }
 }
