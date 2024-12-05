@@ -152,9 +152,9 @@ if not DEBUG:
 
 
 # Esto solo debe ser activado si estamos haciendo el colect statics! si vamos a deployar debemos activar el codigo comentado por encima.
-#STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-LOGIN_URL = "login"
+#LOGIN_URL = "login"
 
 
 # Default primary key field type
