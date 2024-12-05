@@ -138,6 +138,6 @@ h2 {
 /* Media query para pantallas pequeñas */
 @media (max-width: 768px) {
   .image-venta .image-text {
-    font-size: 0.8em; /* Reducir el tamaño del texto */
+    font-size: 0.72em; /* Reducir el tamaño del texto */
   }
 }
