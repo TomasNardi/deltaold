@@ -68,11 +68,11 @@
                                                     class="img-fluid mb-4" 
                                                     style="max-width: 50%; height: auto;">
                                                     {% if producto.estado_carta %}
-                                                        <p style="font-weight: bold;">Estado : {{ producto.estado_carta }}</p>
-                                                        {% else %}
-                                                        <p style="font-weight: bold;">Producto Sellado</p>
+                                                    <p style="font-weight: bold;">Estado : {{ producto.estado_carta }}</p>
+                                                    {% else %}
+                                                    <p style="font-weight: bold;">Producto Sellado</p>
                                                     {% endif %}
-                                                <p class="fw-bold text-success" style="font-size: 1.5em;">
+                                                    <p class="fw-bold text-success" style="font-size: 1.5em;">
                                                     <i class="fas fa-tag"></i> <!-- Icono de etiqueta de precio -->
                                                     $ {{ producto.precio|floatformat:0|intcomma }} 
                                                 </p>
