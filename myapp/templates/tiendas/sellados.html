@@ -59,7 +59,7 @@
                                             <h3 class="modal-title" id="exampleModalLabel">{{ producto.titulo }}</h3>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <div class="modal-body"style="background-color: rgba(228, 225, 225, 0.432);">
+                                        <div class="modal-body" style="background-color: rgba(179, 175, 135, 0.499);">
                                             <div class="text-center">
                                                 <!-- Imagen ajustada en el modal -->
                                                 <img 
@@ -72,7 +72,7 @@
                                                     <i class="fas fa-tag"></i> <!-- Icono de etiqueta de precio -->
                                                     $ {{ producto.precio|floatformat:0|intcomma }} 
                                                 </p>
-                                                <p>{{ producto.descripcion }}</p>
+                                                <p style="font-size: 1.2em;">{{ producto.descripcion }}</p>
                                             </div>
                                         </div>
                                     </div>

@@ -52,6 +52,14 @@
                                 data-bs-target="#productModal{{ producto.id }}">
 
                             <!-- Modal -->
+                            <div style="margin-top: 1em;">
+                            {% if producto.estado_carta %}
+                    
+                            <p style="font-weight: bold;">Estado de carta : {{ producto.estado_carta }}</p>
+                            {% else %}
+                            <p style="font-weight: bold;">Producto Sellado</p>
+                            {% endif %}
+                            </div>
                             <div class="modal fade" id="productModal{{ producto.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
@@ -59,7 +67,7 @@
                                             <h3 class="modal-title" id="exampleModalLabel">{{ producto.titulo }}</h3>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <div class="modal-body" style="background-color: rgba(228, 225, 225, 0.432);">
+                                        <div class="modal-body" style="background-color: rgba(158, 156, 135, 0.111);">
                                             <div class="text-center">
                                                 <!-- Imagen ajustada en el modal -->
                                                 <img 
@@ -67,16 +75,11 @@
                                                     alt="Imagen de {{ producto.titulo }}" 
                                                     class="img-fluid mb-4" 
                                                     style="max-width: 50%; height: auto;">
-                                                    {% if producto.estado_carta %}
-                                                    <p style="font-weight: bold;">Estado : {{ producto.estado_carta }}</p>
-                                                    {% else %}
-                                                    <p style="font-weight: bold;">Producto Sellado</p>
-                                                    {% endif %}
                                                     <p class="fw-bold text-success" style="font-size: 1.5em;">
                                                     <i class="fas fa-tag"></i> <!-- Icono de etiqueta de precio -->
                                                     $ {{ producto.precio|floatformat:0|intcomma }} 
                                                 </p>
-                                                <p>{{ producto.descripcion }}</p>
+                                                <p style="font-size: 1.2em;">{{ producto.descripcion }}</p>
                                             </div>
                                         </div>
                                     </div>

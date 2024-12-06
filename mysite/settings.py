@@ -25,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY", default="TestDjango1996")
 
 # Produccion
-# DEBUG = "RENDER" not in os.environ
+DEBUG = "RENDER" not in os.environ
 
 # Desarrollo
-DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS = []
 
