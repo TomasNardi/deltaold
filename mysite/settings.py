@@ -34,7 +34,7 @@ ALLOWED_HOSTS = []
 
 # Agrego la linea para produccion! -> render.com
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
-# Si existe la variable externa, se la agrego a los host permitidos.
+# Si existe la variable externa, se la agrego a los host permitidos
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
