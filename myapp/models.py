@@ -31,6 +31,13 @@ class Task(models.Model):
         )
 
 
+class EstadoCarta(models.Model):
+    estado = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.estado
+
+
 class Productos(models.Model):
     titulo = models.CharField(max_length=255)
     descripcion = models.TextField()
@@ -38,12 +45,15 @@ class Productos(models.Model):
     imagen_url = models.URLField(max_length=500, blank=True, null=True)
     sellado = models.BooleanField(default=False)
     single = models.BooleanField(default=False)
+    estado_carta = models.ForeignKey(
+        EstadoCarta, on_delete=models.SET_NULL, blank=True, null=True
+    )
     stock = models.BooleanField(default=False)
 
     def __str__(self):
         return self.titulo
-    
-    
+
+
 class Eventos(models.Model):
     titulo = models.CharField(max_length=255)
     direccion = models.CharField(max_length=255)
