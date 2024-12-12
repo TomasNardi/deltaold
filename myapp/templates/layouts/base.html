@@ -66,9 +66,91 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
-      <!-- Botón flotante de WhatsApp -->
-      <a href="https://wa.me/+5491157057230" target="_blank" class="whatsapp-float" aria-label="Contact Us">
-        <i class="fab fa-whatsapp"></i>
-      </a>
+<!-- Botón flotante de Carrito -->
+<a href="{% url 'ver_carrito' %}" target="_self" class="cart-float" aria-label="Ver carrito">
+  <i class="fas fa-shopping-cart"></i>
+  <span class="cart-counter" id="cart-counter">0</span>
+</a>
 
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/+5491157057230" target="_blank" class="whatsapp-float" aria-label="Contact Us">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Estilos para el botón y el contador -->
+<style>
+  /* Botón de compras */
+  .cart-float {
+    position: fixed;
+    bottom: 90px; /* Ajuste para estar encima del botón de WhatsApp */
+    right: 20px;
+    background-color: #5f0ae7;
+    color: white;
+    width: 60px; /* Igual ancho y alto para mantener el círculo */
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-size: 24px;
+    z-index: 1001; /* Asegura que esté por encima de otros elementos */
+    transition: background-color 0.4s, transform 0.4s;
+    text-decoration: none; /* Elimina el subrayado */
+  }
+  .cart-float a {
+    color: inherit; /* Mantiene el color del enlace igual que el del contenedor */
+    text-decoration: none; /* Asegura que los enlaces no tengan subrayado */
+}
+  .cart-float:hover {
+    background-color: #5f0ae7c5;
+  }
+  .cart-float i {
+    line-height: 1;
+  }
+
+  /* Contador del carrito */
+  .cart-counter {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1002; /* Asegura que esté por encima del botón */
+  }
+</style>
+
+<!-- Enlace a FontAwesome para los íconos -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+<!-- Incluir el script para actualizar el contador -->
+<script>
+  // Función para actualizar dinámicamente el contador del carrito
+  function actualizarContadorCarrito() {
+    fetch("/api/cantidad-productos/")
+      .then(response => response.json())
+      .then(data => {
+        const contador = document.getElementById("cart-counter");
+        if (contador) {
+          contador.innerText = data.cantidad_productos;
+        }
+      })
+      .catch(error => console.error("Error al actualizar el contador del carrito:", error));
+  }
+
+  // Llamar a la función cuando se carga la página
+  document.addEventListener("DOMContentLoaded", () => {
+    actualizarContadorCarrito(); // Al cargar la página, actualizamos el contador
+  });
+</script>
 </html>

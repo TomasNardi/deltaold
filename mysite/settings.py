@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default="TestDjango1996")
 DEBUG = "RENDER" not in os.environ
 
 # Desarrollo
-# DEBUG = True
+#DEBUG = True
 
 ALLOWED_HOSTS = ['deltaold.online', 'www.deltaold.online']
 
@@ -76,6 +76,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "myapp.context_processors.carrito_context", 
             ],
         },
     },

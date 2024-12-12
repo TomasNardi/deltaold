@@ -42,52 +42,65 @@
                         <div class="card-body text-center image-container" style="background-color: rgba(145, 145, 145, 0.178); border: solid 0.2px rgba(0, 0, 0, 0.568); font-size: 0.8em;">
                             <h2 class="card-title" style="font-size: 1.8em;">{{ producto.titulo }}</h2>
 
-                            <!-- Imagen con efecto hover -->
-                            <img 
-                                src="{{ producto.imagen_url }}" 
-                                alt="Imagen de {{ producto.titulo }}" 
-                                class="product-image"
-                                style="margin-top: 1em; max-width: 100%; max-height: 100%; object-fit: contain;"
-                                data-bs-toggle="modal" 
-                                data-bs-target="#productModal{{ producto.id }}">
+                             <!-- Imagen con efecto hover y modal para detalles -->
+                    <img src="{{ producto.imagen_url }}" alt="Imagen de {{ producto.titulo }}" class="product-image"
+                    style="margin-top: 1em; max-width: 100%; max-height: 100%; object-fit: contain;"
+                    data-bs-toggle="modal" data-bs-target="#productModal{{ producto.id }}">
 
                             <!-- Modal -->
-                            <div class="modal fade" id="productModal{{ producto.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h3 class="modal-title" id="exampleModalLabel">{{ producto.titulo }}</h3>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body" style="background-color: rgba(158, 156, 135, 0.111);">
-                                            <div class="text-center">
-                                                <!-- Imagen ajustada en el modal -->
-                                                <img 
-                                                    src="{{ producto.imagen_url }}" 
-                                                    alt="Imagen de {{ producto.titulo }}" 
-                                                    class="img-fluid mb-4" 
-                                                    style="max-width: 50%; height: auto;">
-                                                   
-                                                <p class="fw-bold text-success" style="font-size: 1.5em;">
-                                                    <i class="fas fa-tag"></i> <!-- Icono de etiqueta de precio -->
-                                                    $ {{ producto.precio|floatformat:0|intcomma }} 
-                                                </p>
-                                                <p style="font-size: 1.2em;">{{ producto.descripcion }}</p>
-                                            </div>
+                    <div class="modal fade" id="productModal{{ producto.id }}" tabindex="-1"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="exampleModalLabel">{{ producto.titulo }}</h3>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body" style="background-color: rgba(158, 156, 135, 0.111);">
+                                <div class="text-center">
+                                    <!-- Imagen ajustada en el modal -->
+                                    <img src="{{ producto.imagen_url }}" alt="Imagen de {{ producto.titulo }}"
+                                        class="img-fluid mb-4" style="max-width: 50%; height: auto;">
+                                    <p class="fw-bold text-success" style="font-size: 1.5em;">
+                                        <i class="fas fa-tag"></i> $ {{ producto.precio|floatformat:0|intcomma }}
+                                    </p>
+                                    <p style="font-size: 1.2em;">{{ producto.descripcion }}</p>
+                                </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="mt-3">
-                                {% if producto.estado_carta %}
-                                <p style="font-weight: bold;">Estado : {{ producto.estado_carta }}</p>
-                                {% else %}
-                                <p style="font-weight: bold;">Producto Sellado</p>
-                                {% endif %} 
-                                <p class="fw-bold text-success" style="font-size: 1.5em;">
-                                    <i class="fas fa-tag"></i> <!-- Icono de etiqueta de precio -->
-                                    $ {{ producto.precio|floatformat:0|intcomma }}
-                                </p>
+                                <div class="mt-3">
+                                    <!-- Precio atractivo con icono y estilo Boostrap -->
+                                    <p class="fw-bold text-success" style="font-size: 1.5em;">
+                                        <i class="fas fa-tag"></i> $ {{ producto.precio|floatformat:0|intcomma }}
+                                    </p>
+                                    <form method="POST" action="{% url 'agregar_al_carrito' %}"
+                                        id="agregar-carrito-form-{{ producto.id }}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="producto_id" value="{{ producto.id }}">
+                                        {% if producto.id in carrito_ids %}
+                                        <!-- Botón para eliminar del carrito -->
+                                        <button type="button" class="btn eliminar-carrito" data-producto-id="{{ producto.id }}"
+                                            style="background-color: #868e96; color: white; border: none; padding: 10px 15px; border-radius: 5px; font-size: 1em; 
+                                                               transition: background-color 0.3s ease, transform 0.3s ease;"
+                                            onmouseover="this.style.backgroundColor='#6c757d'; this.style.transform='scale(1.05)';"
+                                            onmouseout="this.style.backgroundColor='#868e96'; this.style.transform='scale(1)';">
+                                            <i class="fas fa-trash-alt"></i> Eliminar
+                                        </button>
+                                        {% else %}
+                                        <!-- Botón para agregar al carrito -->
+                                        <button type="submit" class="btn agregar-carrito" data-producto-id="{{ producto.id }}"
+                                            style="background-color: #9c27b0; color: white; border: none; padding: 10px 15px; border-radius: 5px; font-size: 1em;
+                                                               transition: background-color 0.3s ease, transform 0.3s ease;"
+                                            onmouseover="this.style.backgroundColor='#7c1a8c'; this.style.transform='scale(1.05)';"
+                                            onmouseout="this.style.backgroundColor='#9c27b0'; this.style.transform='scale(1)';">
+                                            <i class="fas fa-plus"></i> Agregar
+                                        </button>
+                                        {% endif %}
+                                    </form>
                             </div>
                         </div>
                     </div>
@@ -96,4 +109,190 @@
         {% endfor %}
     </div>
 </div>
+
+<!-- Script para manejar la adición y eliminación del carrito con AJAX -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    // Función para actualizar dinámicamente el contador del carrito
+    function actualizarContadorCarrito() {
+        fetch("/api/cantidad-productos/")
+            .then(response => response.json())
+            .then(data => {
+                const contador = document.getElementById("cart-counter");
+                if (contador) {
+                    contador.innerText = data.cantidad_productos;
+                }
+            })
+            .catch(error => console.error("Error al actualizar el contador del carrito:", error));
+    }
+
+    // Manejar el formulario de agregar al carrito
+    $('form[id^="agregar-carrito-form"]').on('submit', function (event) {
+        event.preventDefault(); // Evitar recargar la página
+
+        var form = $(this);
+        var button = form.find('button');
+        var producto_id = form.find('input[name="producto_id"]').val();
+
+        // Deshabilitar el botón mientras se hace la solicitud
+        button.prop('disabled', true);
+        var textoOriginal = button.text();
+        button.text('Procesando...');
+
+        $.ajax({
+            url: form.attr('action'),
+            method: 'POST',
+            data: form.serialize(),
+            success: function (response) {
+                if (response.success) {
+                    if (response.agregado) {
+                        // Cambiar el texto y color del botón a "Eliminar del carrito" y mantener el color gris
+                        button.html('<i class="fas fa-trash-alt"></i> Eliminar')
+                            .removeClass('btn-primary')
+                            .addClass('btn-secondary') // Mantener color gris
+                            .css({
+                                'background-color': '#868e96',
+                                'color': 'white',
+                                'border': 'none',
+                                'padding': '10px 15px',
+                                'border-radius': '5px',
+                                'font-size': '1em'
+                            })
+                            .prop('disabled', false);  // Deshabilitar temporalmente la desactivación del botón
+                    } else {
+                        // Cambiar el texto y color del botón a "Agregar al carrito"
+                        button.html('<i class="fas fa-plus"></i> Agregar')
+                            .removeClass('btn-secondary')
+                            .addClass('btn-primary') // Cambiar color a morado
+                            .css({
+                                'background-color': '#9c27b0',
+                                'color': 'white',
+                                'border': 'none',
+                                'padding': '10px 15px',
+                                'border-radius': '5px',
+                                'font-size': '1em'
+                            })
+                            .prop('disabled', false);  // Habilitar el botón si es necesario
+                    }
+                    actualizarContadorCarrito(); // Actualizar contador
+                } else if (response.error) {
+                    alert(response.error); // Mostrar mensaje de error
+                    button.prop('disabled', false).text(textoOriginal);
+                }
+            },
+            error: function () {
+                alert("Error al procesar la solicitud. Intente nuevamente.");
+                button.prop('disabled', false).text(textoOriginal);
+            },
+            complete: function () {
+                button.prop('disabled', false); // Rehabilitar el botón
+            }
+        });
+    });
+
+    // Manejar la eliminación del carrito
+    $('.eliminar-carrito').on('click', function () {
+        var button = $(this);
+        var producto_id = button.data('producto-id');
+
+        // Deshabilitar el botón mientras se hace la solicitud
+        button.prop('disabled', true);
+        button.text('Eliminando...');
+
+        $.ajax({
+            url: "{% url 'eliminar_de_tienda' %}",
+            method: 'POST',
+            data: {
+                'producto_id': producto_id,
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            success: function (response) {
+                if (response.success) {
+                    // Cambiar el texto del botón a "Agregar" después de eliminar del carrito
+                    button.html('<i class="fas fa-plus"></i> Agregar')
+                        .removeClass('btn-secondary')
+                        .addClass('btn-primary') // Cambiar color a morado
+                        .css({
+                            'background-color': '#9c27b0',  // Fondo morado
+                            'color': 'white',
+                            'border': 'none',
+                            'padding': '10px 15px',
+                            'border-radius': '5px',
+                            'font-size': '1em',
+                            'transition': 'background-color 0.3s ease, transform 0.3s ease'
+                        })
+                        .prop('disabled', false)  // Habilitar el botón
+
+                        // Agregar los efectos de hover
+                        .on('mouseover', function () {
+                            $(this).css({
+                                'background-color': '#7c1a8c',  // Fondo morado más oscuro
+                                'transform': 'scale(1.05)'  // Escala al pasar el mouse
+                            });
+                        })
+                        .on('mouseout', function () {
+                            $(this).css({
+                                'background-color': '#9c27b0',  // Fondo morado original
+                                'transform': 'scale(1)'  // Volver al tamaño original
+                            });
+                        });
+
+                    // Cambiar el formulario para que apunte a la URL de agregar al carrito
+                    var form = button.closest('form');
+                    form.attr('action', '{% url "agregar_al_carrito" %}');
+
+                    // Cambiar el ID del formulario para que sea nuevo
+                    var form_id = 'agregar-carrito-form-' + producto_id;
+                    form.attr('id', form_id);
+
+                    // Cambiar el tipo de botón dentro del formulario
+                    var newButton = $('<button>')
+                        .attr('type', 'submit')
+                        .addClass('btn btn-primary')
+                        .html('<i class="fas fa-plus"></i> Agregar')
+                        .css({
+                            'background-color': '#9c27b0', // Fondo morado
+                            'color': 'white',
+                            'border': 'none',
+                            'padding': '10px 15px',
+                            'border-radius': '5px',
+                            'font-size': '1em',
+                            'transition': 'background-color 0.3s ease, transform 0.3s ease'
+                        })
+                        .prop('disabled', false)  // Habilitar el botón
+
+                        // Agregar los efectos de hover
+                        .on('mouseover', function () {
+                            $(this).css({
+                                'background-color': '#7c1a8c',  // Fondo morado más oscuro
+                                'transform': 'scale(1.05)'  // Escala al pasar el mouse
+                            });
+                        })
+                        .on('mouseout', function () {
+                            $(this).css({
+                                'background-color': '#9c27b0',  // Fondo morado original
+                                'transform': 'scale(1)'  // Volver al tamaño original
+                            });
+                        });
+
+                    // Reemplazar el botón antiguo con el nuevo
+                    form.find('button').replaceWith(newButton);
+
+                    // Actualizar el contador del carrito
+                    actualizarContadorCarrito();
+                } else {
+                    alert('Hubo un error al eliminar el producto: ' + response.error);
+                }
+            },
+            error: function (xhr, status, error) {
+                alert('Error al procesar la solicitud: ' + error);
+            },
+            complete: function () {
+                button.prop('disabled', false);
+                button.text('Eliminar');
+            }
+        });
+    });
+</script>
 {% endblock %}

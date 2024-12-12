@@ -1,12 +1,13 @@
 #Importo la funcion de requeriemito de login.
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse , JsonResponse
+from urllib.parse import urlencode
 from django.shortcuts import get_object_or_404
+from django.shortcuts import render
 #Importo las tablas para manejar los datos que se encuentran ahi.
 from .models import Task, Productos , Eventos
 #Imoportamos la funcion de renderizado de la web. 
 from django.shortcuts import render , redirect
-from .forms import CreateNewTasks 
 #Formulario para crear usuario.
 from django.contrib.auth.forms import UserCreationForm , AuthenticationForm
 #Funcionalidad para agregar Usuarios
@@ -50,11 +51,20 @@ def evento(request):
     
 def productos(request):
     productos = Productos.objects.all()
-    return render(request, "tienda.html", {'productos' : productos})
+    carrito_ids = request.session.get('carrito', [])
+    
+    # Crear un conjunto con los ids de los productos en el carrito para comprobar rápidamente
+    carrito_ids_set = set(item['id'] for item in carrito_ids)
+    
+    return render(request, "tienda.html", {'productos': productos, 'carrito_ids': carrito_ids_set})
+
+
 
 def single(request):
     productos = Productos.objects.all()
-    return render(request, "tiendas/singles.html", {'productos' : productos})
+    carrito_ids = request.session.get('carrito', [])
+    carrito_ids_set = set(item['id'] for item in carrito_ids)
+    return render(request, "tiendas/singles.html", {'productos': productos, 'carrito_ids': carrito_ids_set})
 
 def sellado(request):
     productos = Productos.objects.all()
@@ -137,3 +147,152 @@ def create_superuser(request):
         return HttpResponse("Superusuario creado con éxito.")
     else:
         return HttpResponse("El superusuario ya existe.")
+    
+def obtener_cantidad_productos(request):
+    carrito = request.session.get("carrito", [])
+    cantidad_productos = sum(item["cantidad"] for item in carrito)  
+    return JsonResponse({"cantidad_productos": cantidad_productos})
+    
+
+def agregar_al_carrito(request):
+    if request.method == "POST":
+        producto_id = request.POST.get("producto_id")
+
+        # Obtener el producto
+        producto = get_object_or_404(Productos, id=producto_id)
+
+        # Verificar que el producto tiene stock disponible
+        if not producto.stock:
+            return JsonResponse({"success": False, "error": "Producto sin stock."})
+
+        # Inicializar el carrito en la sesión si no existe
+        if "carrito" not in request.session:
+            request.session["carrito"] = []
+
+        carrito = request.session["carrito"]
+
+        # Verificar si el producto ya está en el carrito
+        for item in carrito:
+            if item["id"] == producto.id:
+                # Eliminar el producto si ya está en el carrito (funcionalidad de toggle)
+                carrito.remove(item)
+                request.session["carrito"] = carrito
+                request.session.modified = True  # Marcar la sesión como modificada
+                return JsonResponse({
+                    "success": True,
+                    "agregado": False,  # Indica que fue eliminado
+                    "cantidad_productos": len(carrito),  # Cantidad actualizada en el carrito
+                })
+
+        # Agregar el producto al carrito
+        carrito.append({
+            "id": producto.id,
+            "titulo": producto.titulo,
+            "precio": float(producto.precio),
+            "cantidad": 1,  # Por defecto, agregar 1 unidad
+        })
+
+        # Guardar el carrito actualizado en la sesión
+        request.session["carrito"] = carrito
+        request.session.modified = True  # Asegúrate de marcar la sesión como modificada
+
+        # Responder con el estado actualizado del carrito
+        return JsonResponse({
+            "success": True,
+            "agregado": True,  # Indica que fue agregado
+            "cantidad_productos": len(carrito),  # Cantidad actualizada en el carrito
+        })
+
+    return JsonResponse({"success": False, "error": "Método no permitido."})
+
+
+
+def ver_carrito(request):
+    carrito = request.session.get("carrito", [])  # Obtener los productos del carrito desde la sesión
+
+    # Si el carrito está vacío, mostrar un mensaje
+    if not carrito:
+        return render(request, "tiendas/carrito.html", {"mensaje": "Tu carrito está vacío.", "cantidad_productos": 0})
+    
+    # Calcular el total de cada producto (precio x cantidad) y el total del carrito
+    for item in carrito:
+        item["total_producto"] = item["precio"] * item["cantidad"]  # Total por producto
+    
+    # Calcular el total general del carrito
+    total = sum(item["total_producto"] for item in carrito)
+    cantidad_productos = sum(item["cantidad"] for item in carrito)  # Cantidad total de productos
+    
+    # Crear el mensaje de WhatsApp
+    mensaje = "Carrito de Compras de Delta Old:\n"
+    for item in carrito:
+        mensaje += f"{item['titulo']} - $ {item['precio']} x {item['cantidad']} = $ {item['total_producto']}\n"
+    
+    mensaje += f"\nTotal: $ {total}"  # Añadir el total al final del mensaje
+    
+    return render(request, "tiendas/carrito.html", {
+        "carrito": carrito,
+        "total": total,
+        "mensaje": mensaje,
+        "cantidad_productos": cantidad_productos
+    })
+
+
+
+def eliminar_del_carrito(request):
+    if request.method == "POST":
+        producto_id = request.POST.get("producto_id")
+
+        carrito = request.session.get("carrito", [])
+        carrito = [item for item in carrito if item["id"] != int(producto_id)]
+
+        request.session["carrito"] = carrito
+        request.session.modified = True
+
+        return JsonResponse({"status": "success"})  # Respuesta para confirmar eliminación
+    return JsonResponse({"error": "Método no permitido."}, status=405)
+
+
+#Lo armo para enviar por whats app el pedido.
+def procesar_compra(request):
+    carrito = request.session.get("carrito", [])
+    if not carrito:
+        return JsonResponse({"error": "El carrito está vacío."})
+
+    # Crear el mensaje para WhatsApp
+    mensaje = "¡Hola! Quiero comprar los siguientes productos:\n\n"
+    for item in carrito:
+        mensaje += f"- {item['titulo']} (x{item['cantidad']}): ${item['precio']} c/u\n"
+    total = sum(item["precio"] * item["cantidad"] for item in carrito)
+    mensaje += f"\nTotal: ${total}"
+
+    # URL de WhatsApp
+    telefono_vendedor = "541152203378"  # Cambia al número del vendedor
+    url = f"https://wa.me/{telefono_vendedor}?{urlencode({'text': mensaje})}"
+
+    return JsonResponse({"url": url})
+
+
+def eliminar_de_tienda(request):
+    if request.method == 'POST' and request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        producto_id = request.POST.get('producto_id')
+
+        if producto_id:
+            try:
+                # Obtener el carrito de la sesión
+                carrito = request.session.get('carrito', [])
+
+                # Buscar el producto y eliminarlo
+                carrito = [producto for producto in carrito if producto['id'] != int(producto_id)]
+
+                # Guardar el carrito actualizado en la sesión
+                request.session['carrito'] = carrito
+
+                # Responder correctamente
+                return JsonResponse({'success': True})
+
+            except Exception as e:
+                return JsonResponse({'error': str(e)}, status=400)
+
+        return JsonResponse({'error': 'Producto no encontrado'}, status=400)
+
+    return JsonResponse({'error': 'Solicitud inválida'}, status=400)

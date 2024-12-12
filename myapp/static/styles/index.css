@@ -20,7 +20,7 @@ h2 {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background-color: #25d366;
+  background-color: #25d365f1;
   color: white;
   border-radius: 50%;
   width: 60px;
@@ -33,7 +33,7 @@ h2 {
   text-decoration: none;
 }
 .whatsapp-float:hover {
-  background-color: #1ebe57;
+  background-color: #1ebe56d5;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
   transition: background-color 0.3s, box-shadow 0.3s;
 }
@@ -141,3 +141,4 @@ h2 {
     font-size: 0.72em; /* Reducir el tamaño del texto */
   }
 }
+
