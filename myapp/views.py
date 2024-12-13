@@ -236,28 +236,6 @@ def ver_carrito(request):
         "mensaje": mensaje,
         "cantidad_productos": cantidad_productos
     })
-    
-#Lo armo para enviar por whats app el pedido.
-def procesar_compra(request):
-    carrito = request.session.get("carrito", [])
-    if not carrito:
-        return JsonResponse({"error": "El carrito está vacío."})
-
-    # Crear el mensaje para WhatsApp
-    mensaje = "¡Hola! Quiero comprar los siguientes productos:\n\n"
-    for item in carrito:
-        mensaje += f"- {item['titulo']} (x{item['cantidad']}): ${item['precio']} c/u\n"
-    total = sum(item["precio"] * item["cantidad"] for item in carrito)
-    mensaje += f"\nTotal: ${total}"
-
-    # URL de WhatsApp
-    telefono_vendedor = "541152203378"  # Cambia al número del vendedor
-    url = f"https://wa.me/{telefono_vendedor}?{urlencode({'text': mensaje})}"
-
-    return JsonResponse({"url": url})
-
-
-
 
 def eliminar_del_carrito(request):
     if request.method == "POST":

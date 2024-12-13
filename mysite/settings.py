@@ -27,10 +27,15 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default="TestDjango1996")
 # Produccion
 DEBUG = "RENDER" not in os.environ
 
-# Desarrollo
+# Desarrollo Debug
 #DEBUG = True
 
+#Produccion
 ALLOWED_HOSTS = ['deltaold.online', 'www.deltaold.online']
+
+#Desarrollo
+#ALLOWED_HOSTS = []
+
 
 # Agrego la linea para produccion! -> render.com
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
@@ -76,7 +81,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "myapp.context_processors.carrito_context", 
+                "myapp.funciones.context_processors.carrito_context",  
             ],
         },
     },
@@ -104,6 +109,7 @@ DATABASES = {
     }
 }
 """
+
 
 
 # Password validation

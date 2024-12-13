@@ -18,7 +18,6 @@ urlpatterns = [
     path("crearusuario/", views.create_superuser),
     path("ver_carrito/", views.ver_carrito, name="ver_carrito"),
     path("agregar_al_carrito/", views.agregar_al_carrito, name="agregar_al_carrito"),
-    path("procesar_compra/", views.procesar_compra, name="procesar_compra"),
     path("eliminar_del_carrito/", views.eliminar_del_carrito, name="eliminar_del_carrito"),
     path("eliminar_de_tienda/", views.eliminar_de_tienda, name="eliminar_de_tienda"),
     
