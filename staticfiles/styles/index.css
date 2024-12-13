@@ -142,3 +142,16 @@ h2 {
   }
 }
 
+.titulo-productos {
+  font-size: 1.8em;
+  font-weight: bold;
+  font-family: "Barlow", sans-serif;
+}
+
+@media (max-width: 768px) {
+  .titulo-productos {
+      font-size: 1.1em;
+      font-weight: bold;
+
+  }
+}
