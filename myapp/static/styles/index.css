@@ -108,9 +108,9 @@ h2 {
 .spark {
   content: '';
   position: absolute;
-  width: 10px;
-  height: 10px;
-  background-color: yellow; /* Color de las chispas */
+  width: 15px;  /* Tamaño por defecto */
+  height: 15px; /* Tamaño por defecto */
+  background-color: #9400D3; /* Color inicial violeta */
   border-radius: 50%;
   pointer-events: none;
   opacity: 0;
@@ -121,19 +121,46 @@ h2 {
   0% {
     opacity: 1;
     transform: translate(0, 0) scale(1);
-    box-shadow: 0 0 5px 3px rgba(255, 255, 0, 0.8);
+    box-shadow: 0 0 10px 6px rgba(148, 0, 211, 0.8);
   }
   50% {
     opacity: 0.7;
-    transform: translate(30px, -30px) scale(1.5);
-    box-shadow: 0 0 15px 8px rgba(255, 255, 0, 0.5);
+    transform: translate(30px, -30px) scale(2);
+    box-shadow: 0 0 20px 12px rgba(186, 85, 211, 0.5);
   }
   100% {
     opacity: 0;
-    transform: translate(60px, -60px) scale(2);
-    box-shadow: 0 0 0 0 rgba(255, 255, 0, 0);
+    transform: translate(60px, -60px) scale(3);
+    box-shadow: 0 0 0 0 rgba(255, 105, 180, 0);
   }
 }
+
+/* Ajustes para pantallas pequeñas (celulares) */
+@media (max-width: 768px) {
+  .spark {
+    width: 10px;  /* Reducir el tamaño de las chispas */
+    height: 10px; /* Reducir el tamaño de las chispas */
+  }
+
+  @keyframes spark-animation {
+    0% {
+      opacity: 1;
+      transform: translate(0, 0) scale(0.8); /* Reducir la escala inicial */
+      box-shadow: 0 0 8px 4px rgba(148, 0, 211, 0.8);
+    }
+    50% {
+      opacity: 0.7;
+      transform: translate(20px, -20px) scale(1.5); /* Reducir la escala intermedia */
+      box-shadow: 0 0 15px 8px rgba(186, 85, 211, 0.5);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(40px, -40px) scale(2); /* Reducir la escala final */
+      box-shadow: 0 0 0 0 rgba(255, 105, 180, 0);
+    }
+  }
+}
+
 
 /* Media query para pantallas pequeñas */
 @media (max-width: 768px) {
@@ -153,5 +180,25 @@ h2 {
       font-size: 1.1em;
       font-weight: bold;
 
+  }
+}
+
+
+/* Estilos generales */
+.image-venta img {
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) { /* Puedes ajustar el tamaño de la pantalla según sea necesario */
+  .image-venta img {
+      height: 5em; /* Ajusta la altura deseada */
+      width: 200%;
+  }
+
+  .image-text span {
+      font-size: 1rem; /* Ajusta el tamaño del texto si es necesario */
   }
 }
