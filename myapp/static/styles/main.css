@@ -9,20 +9,6 @@ body {
     
 }
 
-/* Titulo responsive de carro de compras tamaño lg y celular */
-.titulo-productos {
-    font-size: 1.7em;
-    font-weight: bold;
-    font-family: "Barlow", sans-serif;
-  }
-  
-  @media (max-width: 768px) {
-    .titulo-productos {
-        font-size: 1.34em;
-        font-weight: 700;
-    }
-}
-  
 /* Establece el z-index para el navbar */
 .navbar {
     position: fixed; /* Fija el navbar en la parte superior */
