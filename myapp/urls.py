@@ -21,7 +21,6 @@ urlpatterns = [
     path("eliminar_del_carrito/", views.eliminar_del_carrito, name="eliminar_del_carrito"),
     path("eliminar_de_tienda/", views.eliminar_de_tienda, name="eliminar_de_tienda"),
     
-    
     #test carrito
     path("api/cantidad-productos/", views.obtener_cantidad_productos, name="api_cantidad_productos"),
 ]

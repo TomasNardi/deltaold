@@ -16,6 +16,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login , logout , authenticate
 from django.db import IntegrityError
 
+
 # Create your views here.
 def index(request):
     info = Task.objects.all().order_by('-user')
@@ -57,8 +58,6 @@ def productos(request):
     carrito_ids_set = set(item['id'] for item in carrito_ids)
     
     return render(request, "tienda.html", {'productos': productos, 'carrito_ids': carrito_ids_set})
-
-
 
 def single(request):
     productos = Productos.objects.all()
@@ -206,7 +205,6 @@ def agregar_al_carrito(request):
     return JsonResponse({"success": False, "error": "Método no permitido."})
 
 
-
 def ver_carrito(request):
     carrito = request.session.get("carrito", [])  # Obtener los productos del carrito desde la sesión
 
@@ -222,13 +220,18 @@ def ver_carrito(request):
     total = sum(item["total_producto"] for item in carrito)
     cantidad_productos = sum(item["cantidad"] for item in carrito)  # Cantidad total de productos
     
+    # Formatear el total general del carrito para que no tenga decimales innecesarios y añadir comas
+    total_formateado = "{:,.0f}".format(total)  # Elimina los decimales y añade comas
+
     # Crear el mensaje de WhatsApp
     mensaje = "¡Hola! Quiero comprar los siguientes productos:\n\n"
     
     for item in carrito:
-        mensaje += f"{item['titulo']} - $ {item['precio']} = $ {item['total_producto']}\n"
+        # Formatear el precio de cada producto
+        precio_formateado = "{:,.0f}".format(item['precio'])  # Eliminar decimales y agregar comas
+        mensaje += f"{item['titulo']} - $ {precio_formateado}\n"
     
-    mensaje += f"\nTotal: $ {total}"  # Añadir el total al final del mensaje
+    mensaje += f"\nTotal: $ {total_formateado}"  # Usamos el total formateado
     
     return render(request, "tiendas/carrito.html", {
         "carrito": carrito,
