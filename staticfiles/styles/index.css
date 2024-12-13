@@ -202,3 +202,14 @@ h2 {
       font-size: 1rem; /* Ajusta el tamaño del texto si es necesario */
   }
 }
+
+
+.navegacion{
+  background: rgb(29,3,16);
+background: linear-gradient(50deg, rgba(29,3,16,1) 10%, rgba(0,0,0,1) 61%, rgba(255,0,194,1) 100%);
+}
+
+.cuadraditos{
+  background: rgba(196, 194, 194, 0.623);
+
+}
