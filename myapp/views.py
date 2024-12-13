@@ -216,16 +216,17 @@ def ver_carrito(request):
     
     # Calcular el total de cada producto (precio x cantidad) y el total del carrito
     for item in carrito:
-        item["total_producto"] = item["precio"] * item["cantidad"]  # Total por producto
+        item["total_producto"] = item["precio"]  # Total por producto
     
     # Calcular el total general del carrito
     total = sum(item["total_producto"] for item in carrito)
     cantidad_productos = sum(item["cantidad"] for item in carrito)  # Cantidad total de productos
     
     # Crear el mensaje de WhatsApp
-    mensaje = "Carrito de Compras de Delta Old:\n"
+    mensaje = "¡Hola! Quiero comprar los siguientes productos:\n\n"
+    
     for item in carrito:
-        mensaje += f"{item['titulo']} - $ {item['precio']} x {item['cantidad']} = $ {item['total_producto']}\n"
+        mensaje += f"{item['titulo']} - $ {item['precio']} = $ {item['total_producto']}\n"
     
     mensaje += f"\nTotal: $ {total}"  # Añadir el total al final del mensaje
     
@@ -235,23 +236,7 @@ def ver_carrito(request):
         "mensaje": mensaje,
         "cantidad_productos": cantidad_productos
     })
-
-
-
-def eliminar_del_carrito(request):
-    if request.method == "POST":
-        producto_id = request.POST.get("producto_id")
-
-        carrito = request.session.get("carrito", [])
-        carrito = [item for item in carrito if item["id"] != int(producto_id)]
-
-        request.session["carrito"] = carrito
-        request.session.modified = True
-
-        return JsonResponse({"status": "success"})  # Respuesta para confirmar eliminación
-    return JsonResponse({"error": "Método no permitido."}, status=405)
-
-
+    
 #Lo armo para enviar por whats app el pedido.
 def procesar_compra(request):
     carrito = request.session.get("carrito", [])
@@ -270,6 +255,24 @@ def procesar_compra(request):
     url = f"https://wa.me/{telefono_vendedor}?{urlencode({'text': mensaje})}"
 
     return JsonResponse({"url": url})
+
+
+
+
+def eliminar_del_carrito(request):
+    if request.method == "POST":
+        producto_id = request.POST.get("producto_id")
+
+        carrito = request.session.get("carrito", [])
+        carrito = [item for item in carrito if item["id"] != int(producto_id)]
+
+        request.session["carrito"] = carrito
+        request.session.modified = True
+
+        return JsonResponse({"status": "success"})  # Respuesta para confirmar eliminación
+    return JsonResponse({"error": "Método no permitido."}, status=405)
+
+
 
 
 def eliminar_de_tienda(request):

@@ -1,5 +1,7 @@
 {% extends "layouts/base.html" %}
 
+{% load humanize %}
+
 {% block content %}
 <div class="container">
     <h2 class="my-4">Tu Carrito de Compras :</h2>
@@ -39,7 +41,8 @@
                         </table>
                     </div> <!-- Fin del contenedor de tabla con desplazamiento -->
                     <div class="mt-3">
-                        <p><b>Total:</b> $ {{ total }}</p>  <!-- Mostramos el total calculado -->
+                        <p><b>Total:</b> $ {{ total|intcomma }}</p>
+
                         <a href="https://wa.me/+5491157057230?text={{ mensaje|urlencode }}" class="btn" style="background-color: #8a2be2; border-color: #8a2be2; color: white;" target="_blank">
                             <i class="bi bi-cash"></i> Confirmar Compra
                         </a>

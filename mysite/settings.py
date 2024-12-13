@@ -30,7 +30,7 @@ DEBUG = "RENDER" not in os.environ
 # Desarrollo
 #DEBUG = True
 
-ALLOWED_HOSTS = ['deltaold.online', 'www.deltaold.online']
+ALLOWED_HOSTS = []
 
 # Agrego la linea para produccion! -> render.com
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
