@@ -229,7 +229,7 @@ def ver_carrito(request):
     for item in carrito:
         # Formatear el precio de cada producto
         precio_formateado = "{:,.0f}".format(item['precio'])  # Eliminar decimales y agregar comas
-        mensaje += f"{item['titulo']} - $ {precio_formateado}\n"
+        mensaje += f"{item['titulo']} - $ {precio_formateado}\n\n"  # Doble salto de línea
     
     mensaje += f"\nTotal: $ {total_formateado}"  # Usamos el total formateado
     
