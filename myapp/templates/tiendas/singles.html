@@ -5,7 +5,8 @@
 {% block content %}
  <div class="container">
     <!-- Nueva imagen con cartel encima -->
-    <a href="singles">
+    <a href="/singles/">
+
         <div class="image-venta mt-4" style="box-shadow: 5px 5px 10px rgba(41, 38, 38, 0.5);">
             <img src="../static/image/index_img/singles.webp" class="d-block w-100" alt="Singles">
             <div class="spark" style="top: 20%; left: 30%;"></div>
@@ -22,7 +23,7 @@
         </div>
     </a>
 
-    <a href="sellados">
+    <a href="/sellados/">
         <div class="image-venta mt-4" style="box-shadow: 5px 5px 10px rgba(41, 38, 38, 0.5);">
             <img src="../static/image/index_img/sellados.webp" class="d-block w-100" alt="Sellados">
             <div class="spark" style="top: 20%; left: 30%;"></div>
@@ -42,7 +43,23 @@
     <div class="row">
         <p><b>Cartas - Singles : </b></p>
     </div>
-
+    <!-- BUSQUEDA -->
+    <form method="GET" action="{% url 'buscar_productos' %}" class="mb-4">
+        <div class="row">
+            <div class="col-md-8 mb-2">
+                <!-- Campo de búsqueda -->
+                <input type="text" name="q" class="form-control" style="background-color: aliceblue;"
+                       placeholder="Buscar en Delta Old ..." 
+                       value="{{ query }}">
+            </div>
+            <div class="col-md-4 mb-2">
+                <!-- Botón de búsqueda -->
+                <button type="submit" class="btn btn-primary w-100" style="background-color: #8a2be2; border-color: #8a2be2; box-shadow: 3px 3px rgba(128, 128, 128, 0.459);">
+                    <i class="bi bi-search"></i> Buscar
+                </button>
+            </div>
+        </div>
+    </form>
     <div class="row g-4">
         {% for producto in productos %}
         {% if producto.stock and producto.single %}

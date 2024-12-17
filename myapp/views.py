@@ -15,6 +15,8 @@ from django.contrib.auth.models import User
 #Importo la funcionalidad Django - Cookie
 from django.contrib.auth import login , logout , authenticate
 from django.db import IntegrityError
+#Importo filtros para la web 
+from django.db.models import Q
 
 
 # Create your views here.
@@ -67,7 +69,9 @@ def single(request):
 
 def sellado(request):
     productos = Productos.objects.all()
-    return render(request, "tiendas/sellados.html", {'productos' : productos})
+    carrito_ids = request.session.get('carrito', [])
+    carrito_ids_set = set(item['id'] for item in carrito_ids)
+    return render(request, "tiendas/sellados.html", {'productos' : productos , 'carrito_ids': carrito_ids_set})
 
 """def tasks(request, id):
     task = get_object_or_404(Task , id = id)
@@ -280,3 +284,29 @@ def eliminar_de_tienda(request):
         return JsonResponse({'error': 'Producto no encontrado'}, status=400)
 
     return JsonResponse({'error': 'Solicitud inválida'}, status=400)
+
+def buscar_productos(request):
+    query = request.GET.get("q")  # Captura el parámetro "q" de la búsqueda desde la URL
+    resultados = Productos.objects.all()  # Inicialmente obtenemos todos los productos
+
+    # Obtenemos los productos en el carrito desde la sesión
+    carrito_ids = request.session.get('carrito', [])
+    
+    # Crear un conjunto con los ids de los productos en el carrito para comprobar rápidamente
+    carrito_ids_set = set(item['id'] for item in carrito_ids)
+
+    if query:
+        # Filtramos en varios campos, incluido el campo 'estado' de la relación 'estado_carta'
+        resultados = resultados.filter(
+            Q(titulo__icontains=query) |               # Título contiene la búsqueda
+            Q(descripcion__icontains=query) |          # Descripción contiene la búsqueda
+            Q(estado_carta__estado__icontains=query) | # Filtra por estado_carta.estado
+            Q(precio__icontains=query)                 # Precio contiene la búsqueda
+        )
+
+    context = {
+        "productos": resultados,  # Resultados de búsqueda
+        "query": query,            # El término de búsqueda
+        "carrito_ids": carrito_ids_set  # Productos que están en el carrito
+    }
+    return render(request, "tiendas/busqueda.html", context)

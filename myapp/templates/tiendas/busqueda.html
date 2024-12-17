@@ -4,7 +4,7 @@
 {% block content %}
  <div class="container">
     <!-- Nueva imagen con cartel encima -->
-    <a href="/singles/">
+    <a href="singles">
         <div class="image-venta mt-4" style="box-shadow: 5px 5px 10px rgba(41, 38, 38, 0.5);">
             <img src="../static/image/index_img/singles.webp" class="d-block w-100" alt="Singles">
             <div class="spark" style="top: 20%; left: 30%;"></div>
@@ -21,7 +21,7 @@
         </div>
     </a>
 
-    <a href="/sellados/">
+    <a href="sellados">
         <div class="image-venta mt-4" style="box-shadow: 5px 5px 10px rgba(41, 38, 38, 0.5);">
             <img src="../static/image/index_img/sellados.webp" class="d-block w-100" alt="Sellados">
             <div class="spark" style="top: 20%; left: 30%;"></div>
@@ -39,7 +39,7 @@
     </a>
 
     <div class="row">
-        <p><b>Todos los productos : </b></p>
+        <p><b>Resultados de busqueda : </b></p>
     </div>
 
     <form method="GET" action="{% url 'buscar_productos' %}" class="mb-4">
@@ -58,6 +58,7 @@
             </div>
         </div>
     </form>
+    
 
     <div class="row g-4">
         {% for producto in productos %}
