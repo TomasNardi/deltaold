@@ -87,6 +87,9 @@
                         <p class="fw-bold text-success" style="font-size: 1.5em;">
                             <i class="fas fa-tag"></i> $ {{ producto.precio|floatformat:0|intcomma }}
                         </p>
+                        <p class="estado-productos" style="font-size: 1em;">
+                            Estado : {{ producto.estado_carta }}
+                         </p>
                         <form method="POST" action="{% url 'agregar_al_carrito' %}"
                             id="agregar-carrito-form-{{ producto.id }}">
                             {% csrf_token %}

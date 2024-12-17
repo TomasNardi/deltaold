@@ -187,6 +187,20 @@ h2 {
   }
 }
 
+.estado-productos {
+  font-size: 1em;
+  font-weight: bold;
+  font-family: "Barlow", sans-serif;
+}
+
+@media (max-width: 768px) {
+  .estado-productos {
+      font-size: 0.5em;
+      font-weight: bold;
+
+  }
+}
+
 
 /* Estilos generales */
 .image-venta img {
@@ -216,4 +230,15 @@ background: linear-gradient(50deg, rgba(29,3,16,1) 10%, rgba(0,0,0,1) 61%, rgba(
 .cuadraditos{
   background: rgba(196, 194, 194, 0.623);
 
+}
+
+/* Tamaño normal del ícono eliminar */
+.icono-eliminar {
+  font-size: 0.9em; /* Tamaño base */
+}
+
+@media (max-width: 576px) {
+  .texto-quitar {
+      display: none; /* Ocultar el texto */
+  }
 }

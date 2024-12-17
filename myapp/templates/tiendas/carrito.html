@@ -7,60 +7,67 @@
     <h2 class="my-4">Tu Carrito de Compras :</h2>
 
     {% if carrito %}
-        <div class="row">
-            <div class="col-12">
-                <!-- Contenedor con borde redondeado -->
-                <div class="carrito-container" style="border-radius: 15px; border: 1px solid #ddd; padding: 20px; background-color: #ada8a871; box-shadow: 2px 2px rgba(100, 99, 99, 0.616);">
-                    <div class="table-responsive"> <!-- Clase que hace la tabla desplazable -->
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Producto</th>
-                                    <th>Total</th>
-                                    <th>Acción</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for item in carrito %}
-                                    <tr>
-                                        <td>{{ item.titulo }}</td>
-                                        <!-- Mostramos el total calculado con formato -->
-                                        <td>$ {{ item.total_producto|floatformat:0 }}</td>  
-                                        <td>
-                                            <form method="POST" action="{% url 'eliminar_del_carrito' %}" class="eliminar-carrito-form">
-                                                {% csrf_token %}
-                                                <input type="hidden" name="producto_id" value="{{ item.id }}">
-                                                <button type="button" class="btn btn-danger eliminar-btn" data-producto-id="{{ item.id }}">
-                                                    <i class="fas fa-trash-alt"></i> Quitar
-                                                </button>
-                                                
-                                            </form>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div> <!-- Fin del contenedor de tabla con desplazamiento -->
-                    <div class="mt-3">
-                        <p><b>Total:</b> $ {{ total|intcomma }}</p>
+    <div class="row">
+        <div class="col-12">
+            <!-- Contenedor con borde redondeado -->
+            <div class="carrito-container"
+                style="border-radius: 15px; border: 1px solid #ddd; padding: 20px; background-color: #ada8a871; box-shadow: 2px 2px rgba(100, 99, 99, 0.616);">
+                <div class="table-responsive"> <!-- Clase que hace la tabla desplazable -->
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Total</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in carrito %}
+                            <tr>
+                                <td>{{ item.titulo }}</td>
+                                <!-- Mostramos el total calculado con formato -->
+                                <td>$ {{ item.total_producto|floatformat:0 }}</td>
+                                <td>
+                                    <form method="POST" action="{% url 'eliminar_del_carrito' %}"
+                                        class="eliminar-carrito-form">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="producto_id" value="{{ item.id }}">
+                                        <button type="button" class="btn btn-danger eliminar-btn" data-producto-id="{{ item.id }}">
+                                            <i class="fas fa-trash-alt"></i> <span class="texto-quitar">Quitar</span>
+                                        </button>
 
-                        <a href="https://wa.me/+5491157057230?text={{ mensaje|urlencode }}" class="btn" style="background-color: #8a2be2; border-color: #8a2be2; color: white;" target="_blank">
-                            <i class="bi bi-cash"></i> Confirmar Compra
-                        </a>
-                        
-                        <!-- Botón para regresar a los productos -->
-                        <a href="{% url 'tienda' %}" class="btn btn-secondary ml-3">
-                            <i class="bi bi-shop"></i> Tienda
-                        </a>
-                        
-                    </div>
-                </div> <!-- Fin del contenedor con borde redondeado -->
-            </div>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div> <!-- Fin del contenedor de tabla con desplazamiento -->
+                <div class="mt-3">
+                    <p><b>Total:</b> $ {{ total|intcomma }}</p>
+
+                    <a href="https://wa.me/+5491157057230?text={{ mensaje|urlencode }}" class="btn"
+                        style="background-color: #8a2be2; border-color: #8a2be2; color: white;" target="_blank">
+                        <i class="bi bi-cash"></i> Confirmar Compra
+                    </a>
+
+                    <!-- Botón para regresar a los productos -->
+                    <a href="{% url 'tienda' %}" class="btn btn-secondary ml-3">
+                        <i class="bi bi-shop"></i> Tienda
+                    </a>
+
+                </div>
+            </div> <!-- Fin del contenedor con borde redondeado -->
         </div>
+    </div>
     {% else %}
-        <div class="alert alert-info">
-            {{ mensaje }}
-        </div>
+    <div class="alert " style="background-color: #adadad; color: black ;">
+        {{ mensaje }}
+    </div>
+    <!-- Botón para regresar a los productos -->
+    <a href="{% url 'tienda' %}" class="btn btn-secondary ml-3">
+        <i class="bi bi-shop"></i> Tienda
+    </a>
     {% endif %}
 </div>
 
