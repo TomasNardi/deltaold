@@ -13,9 +13,6 @@ h2 {
   font-size: 2em;
   font-family: "Barlow", sans-serif;
 }
-/* Todo lo relacionado con el carousell */
-.carousel-inner {
-    transition: transform 2s ease, opacity .2s ease-out}
 
 .carousel-inner img {
       max-height: 300px; /* Ajusta esta altura a tus necesidades */
@@ -59,26 +56,6 @@ h2 {
     }
   }
   
-/* Estilo para el cartel pasante */
-.marquee-container {
-  width: 100%; /* Ancho completo */
-  overflow: hidden; /* Oculta el contenido que se desborda */
-  background: rgba(0, 0, 0, 0.5);
-  background: linear-gradient(50deg, rgb(0, 0, 0) 10%, rgb(29, 27, 29) 42%, rgb(0, 0, 0) 81%);
-  padding: 5px; /* Espaciado interno */
-  margin-top: 0.1em;
-  margin-bottom: 0.1em;
-  border-top: 0.2em solid rgba(128, 128, 128, 0.473);
-  border-bottom: 0.2em solid rgba(128, 128, 128, 0.473);
-
-}
-.marquee-text {
-  display: inline-block;
-  white-space: nowrap; /* Evita que el texto se divida */
-  animation: marquee 10s linear infinite; /* Animación */
-  font-size: 1.2em;
-  color: #ffffff; /* Color del texto */
-}
 
 
 /* HOME CAROUSEL ESTILO */
