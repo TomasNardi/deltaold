@@ -2,7 +2,7 @@
 {% load humanize %} <!-- Cargar humanize -->
 
 {% block content %}
-<div class="container">
+ <div class="container">
     <!-- Nueva imagen con cartel encima -->
     <a href="singles">
         <div class="image-venta mt-4" style="box-shadow: 5px 5px 10px rgba(41, 38, 38, 0.5);">
@@ -47,18 +47,18 @@
             <div class="col-md-8 mb-2">
                 <!-- Campo de búsqueda -->
                 <input type="text" name="q" class="form-control" style="background-color: rgb(215, 232, 245);"
-                    placeholder="Buscar en Delta Old ..." value="{{ query }}">
+                       placeholder="Buscar en Delta Old ..." 
+                       value="{{ query }}">
             </div>
             <div class="col-md-4 mb-2">
                 <!-- Botón de búsqueda -->
-                <button type="submit" class="btn btn-primary w-100"
-                    style="background-color: rgb(156, 39, 176); border-color: rgb(156, 39, 176); box-shadow: 3px 3px rgba(128, 128, 128, 0.459);">
+                <button type="submit" class="btn btn-primary w-100" style="background-color: rgb(156, 39, 176); border-color: rgb(156, 39, 176); box-shadow: 3px 3px rgba(128, 128, 128, 0.459);">
                     <i class="bi bi-search"></i> Buscar
                 </button>
             </div>
         </div>
     </form>
-
+    
 
     <div class="row g-4">
         {% for producto in productos %}
@@ -108,8 +108,8 @@
                         <!-- Solo si e es single-->
                         <p class="estado-productos" style="font-size: 1em;">
                             Estado : {{ producto.estado_carta }}
-                        </p>
-                        {% endif %}z
+                         </p>
+                        {% endif %}
 
                         <form method="POST" action="{% url 'agregar_al_carrito' %}"
                             id="agregar-carrito-form-{{ producto.id }}">
@@ -142,7 +142,7 @@
         {% endif %}
         {% empty %}
         <div class="container-fluid" style="padding: 1em;">
-            <div class="row" style=" padding: 1em; border-radius: 3px; background-color:#9089918f; margin-top: 1em;">
+            <div class="row" style=" padding: 1em; border-radius: 3px; background-color:#868e96; margin-top: 1em;">
                 <div class="col-lg-4 d-flex justify-content-center align-items-center">
                     <img src="../../static/image/search/haunter.png" alt="haunter"
                         style="max-width: 100%; height: auto;">
