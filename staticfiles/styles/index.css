@@ -1,5 +1,7 @@
+
 body {
-  background-color: rgba(255, 255, 255, 0.897);
+  background-color: rgba(252, 249, 249, 0.945);
+
 }
 
 h1 {
@@ -11,9 +13,14 @@ h2 {
   font-size: 2em;
   font-family: "Barlow", sans-serif;
 }
-
+/* Todo lo relacionado con el carousell */
 .carousel-inner {
     transition: transform 2s ease, opacity .2s ease-out}
+
+.carousel-inner img {
+      max-height: 300px; /* Ajusta esta altura a tus necesidades */
+      object-fit: cover; /* Para que la imagen no se deforme */
+}
 
 /* Botón flotante */
 .whatsapp-float {
@@ -57,7 +64,7 @@ h2 {
   width: 100%; /* Ancho completo */
   overflow: hidden; /* Oculta el contenido que se desborda */
   background: rgba(0, 0, 0, 0.5);
-    background: linear-gradient(50deg, rgb(0, 0, 0) 10%, rgb(29, 27, 29) 42%, rgb(0, 0, 0) 81%);
+  background: linear-gradient(50deg, rgb(0, 0, 0) 10%, rgb(29, 27, 29) 42%, rgb(0, 0, 0) 81%);
   padding: 5px; /* Espaciado interno */
   margin-top: 0.1em;
   margin-bottom: 0.1em;
@@ -73,7 +80,56 @@ h2 {
   color: #ffffff; /* Color del texto */
 }
 
-/* Estilo para la imagen con cartel encima */
+
+/* HOME CAROUSEL ESTILO */
+/* Estilo para la imagen con texto encima */
+.home-container-text {
+  position: relative;
+  width: 100%;
+  margin-bottom: 0.7em;
+  overflow: hidden; /* Asegura que las chispas no se salgan del contenedor */
+}
+
+.home-container-text img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px; /* Bordes redondeados */
+}
+
+.home-container-text .text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-style: italic; /* Texto en cursiva */
+  transform: translate(-50%, -50%);
+  color: white; /* Texto blanco */
+  font-size: 4em; /* Tamaño más grande por defecto */
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra de texto */
+  background-color: rgba(0, 0, 0, 0.993); /* Fondo negro con algo de transparencia */
+  padding: 10px 20px;
+  border-radius: 8px;
+  max-width: 90%; /* Para evitar que el texto se desborde */
+  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+  white-space: nowrap; /* Asegura que el texto no se divida en varias líneas */
+  text-align: center;
+}
+
+/* Ajuste en pantallas más pequeñas */
+@media (max-width: 768px) {
+  .home-container-text .text-overlay {
+    font-size: 1.8em; /* Texto más pequeño */
+    font-style: italic; /* Texto en cursiva */
+    padding: 5px 10px; /* Menos espacio alrededor del texto */
+    white-space: nowrap; /* Hace que todo el texto esté en una sola línea */
+    width: 100%; /* Asegura que el texto ocupe todo el ancho disponible */
+    text-overflow: ellipsis; /* Si el texto es muy largo, agrega "..." al final */
+    overflow: hidden; /* Oculta el texto que se sale */
+  }
+}
+
+/* Estilo para la imagen con cartel VENTAS */
 .image-venta {
   position: relative;
   width: 100%;
@@ -234,11 +290,70 @@ background: linear-gradient(50deg, rgba(29,3,16,1) 10%, rgba(0,0,0,1) 61%, rgba(
 
 /* Tamaño normal del ícono eliminar */
 .icono-eliminar {
-  font-size: 0.9em; /* Tamaño base */
+  font-size: 0.9em; 
 }
 
 @media (max-width: 576px) {
   .texto-quitar {
-      display: none; /* Ocultar el texto */
+      display: none; 
   }
 }
+
+
+/* PRISMATIC INICIO */
+
+.countdown-section {
+  margin-top: 1em;
+  border-radius: 2PX;
+  
+}
+
+.countdown-container {
+  background-image: url(../image/index_img/primastic.webp);
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.countdown-overlay {
+  background-color: rgba(110, 110, 110, 0.63);
+  padding: 20px;
+}
+
+.countdown-title {
+  color: white;
+  font-size: 2em;
+  text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.7);
+  margin-bottom: 20px;
+}
+
+.countdown-timer {
+  font-size: 3.5em;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 767px) {
+  .countdown-title {
+      font-size: 1.8em; /* Reducir el tamaño del título */
+  }
+
+  .countdown-timer {
+      font-size: 2.5em; /* Reducir el tamaño del contador */
+  }
+}
+
+/* Estilos para pantallas aún más pequeñas (dispositivos móviles muy pequeños) */
+@media (max-width: 480px) {
+  .countdown-title {
+      font-size: 1.5em; /* Reducir aún más el tamaño del título */
+  }
+
+  .countdown-timer {
+      font-size: 2em; /* Reducir aún más el tamaño del contador */
+  }
+}
+/* PRISMATIC FIN */
