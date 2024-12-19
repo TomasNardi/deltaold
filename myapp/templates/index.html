@@ -1,6 +1,7 @@
 {% extends 'layouts/base.html' %}
 
 {% load static %}
+{% load humanize %}
 
 
 {% block content %}
@@ -99,75 +100,113 @@
 </div>
 
 
-    
-<div class="container" style="margin-top: 2em; border-radius: 1%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-    <div style="background-color: rgba(145, 145, 145, 0.178); border: 1px solid rgba(128, 128, 128, 0.3); border-radius: 8px;">
-        <h1 style="margin-top: 0.5em; font-size: 2.5em; text-align: center; color: #343a40; font-family: 'Barlow', sans-serif;">
-            ¿Cómo comprar en Delta Old Digital?
-        </h1>
-        <div class="row" style="font-size: 1em; padding: 2em; color: #495057;">
-            <!-- Columna 1: Texto -->
-            <div class="col-lg-6">
-                <h2><strong><i class="bi bi-check-circle" style="color: #6f42c1;"> </i> Elegí tu producto :</strong></h2>
-                <p>
-                    Todos los productos están claramente detallados en precio, selección rápida y confiable.
-                </p>
-                
-                <h2><strong><i class="bi bi-cart-check" style="color: #6f42c1;"></i> Confirma tu orden de compra</strong></h2>
-                <p>
-                    Dirígete a <a href="productos" style="color: #6f42c1;">Productos</a>, agrégalo a tu carrito, confirma y serás redirigido a nuestro WhatsApp para finalizar la compra.
-                </p>
-                
-                <h2><strong><i class="bi bi-box" style="color: #6f42c1;"></i> ¡Recibí tu producto!</strong></h2>
-                <p>
-                    Tu producto podrá ser enviado o puedes retirar personalmente coordinando previamente.
-                </p>
-                <p>
-                    Recibir una compra con felicidad es una de las experiencias que garantizamos, gracias a que contamos con los más rápidos y seguros transportadores del país.
-                </p>
-                
-                <h2><strong><i class="bi bi-heart" style="color: #6f42c1;"></i> Nuestros valores</strong></h2>
-                <p>
-                    En Delta Old trabajamos día a día para otorgar una mejor experiencia a cada una de nuestras comunidades y amigos. Si deseas consultar por un evento, producto u otras cosas en particular, contáctanos.
-                </p>
-            </div>
-            
-            <!-- Columna 2: Imagen -->
-            <div class="col-lg-6 d-flex justify-content-center align-items-center">
-                <img src="../static/image/index_img/forma_compra.jpg" class="img-fluid rounded shadow-lg" alt="Imagen de compra" style="max-width: 75%; transition: transform 0.3s ease;">
-            </div>
+<div class="container">
+    <div class="row" style="margin-top: 1em; margin-bottom: 1em;">
+        <!-- Primer div con la imagen "surgin.webp" -->
+        <div class="col-lg-5" style="height: 200px; position: relative;">
+            <!-- Enlace alrededor de la imagen -->
+            <a href="/productos/" style="display: block; width: 100%; height: 100%; position: relative;">
+                <img src="../static/image/index_img/surgin.webp" alt="tienda" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <!-- Texto superpuesto en la imagen -->
+                <div class="countdown-title" style="display: flex; justify-content: center; align-items: center; font-weight: bold; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 2em; background-color: rgba(0, 0, 0, 0.61); padding: 10px 20px; border-radius: 5px; white-space: nowrap;">
+                    COMPRAS ELECTRICAS ⚡
+                </div>
+            </a>
+        </div>
+
+        <!-- Segundo div con la imagen "stellar.webp" a la derecha del primero -->
+        <div class="col-lg-7 mt-3 mt-md-0" style="height: 200px; position: relative;">
+            <!-- Enlace alrededor de la imagen -->
+            <a href="#" onclick="window.location.href='/buscar?q=stellar';" style="display: block; width: 100%; height: 100%; position: relative;">
+                <img src="../static/image/index_img/stellar.webp" alt="tienda" 
+                     style="width: 100%; height: 100%; object-fit: cover;">
+                <!-- Texto superpuesto en la imagen 
+                <div class="countdown-title" style="display: flex; justify-content: center; align-items: center; font-weight: bold; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 2em; background-color: rgba(0, 0, 0, 0.61); padding: 10px 20px; border-radius: 5px; white-space: nowrap;">
+                    CLICK AQUÍ ⚡
+                </div>-->
+            </a>
         </div>
     </div>
 </div>
 
-<!-- Añadir iconos de Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
-<style>
+<!-- Contenedor principal de los carruseles -->
+<div class="container">
 
-    .col-lg-6 h2 {
-        font-size: 1.5em;
-        margin-bottom: 1em;
-        color: #343a40; /* Títulos en negro */
-    }
-    .col-lg-6 p {
-        font-size: 1.1em;
-        margin-bottom: 1em;
-    }
-    .col-lg-6 a {
-        color: #6f42c1;
-        text-decoration: none;
-    }
-    .col-lg-6 a:hover {
-        text-decoration: underline;
-    }
-    /* Efecto hover para la imagen */
-    .col-lg-6 img:hover {
-        transform: scale(1.05);
-    }
-</style>
+    <!-- Row que contiene ambos carruseles -->
+    <div class="row g-0 mb-4 justify-content-center">
+        <!-- Primer carousel -->
+        <div class="col-12 col-md-6">
+            <div id="carouselExampleIndicators1" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for producto in productos|slice:":2" %}
+                    {% if producto.stock %}
+                    <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                        <div class="card h-100 mt-1" style="margin: 0 auto;">
+                            <div class="card-body text-center image-container"
+                                style="background-color: rgba(108, 31, 196, 0.178); border: solid 0.2px rgba(0, 0, 0, 0.568); font-size: 0.8em;">
+                                <!-- Eliminado cualquier interacción de hover -->
+                                <img src="{{ producto.imagen_url }}" alt="Imagen de {{ producto.titulo }}" class="product-image"
+                                    style="margin: 1em auto; width: 100%; height: auto; max-height: 200px; object-fit: contain;">
+                                <div class="mt-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
 
+        <!-- Segundo carousel -->
+        <div class="col-12 col-md-6">
+            <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    {% for producto in productos|slice:"2:4" %}
+                    {% if producto.stock %}
+                    <div class="carousel-item {% if forloop.first %} active {% endif %}">
+                        <div class="card h-100 mt-1" style="margin: 0 auto;">
+                            <div class="card-body text-center image-container"
+                                style="background-color: rgba(108, 31, 196, 0.178); border: solid 0.2px rgba(0, 0, 0, 0.568); font-size: 0.8em;">
+                                <!-- Eliminado cualquier interacción de hover -->
+                                <img src="{{ producto.imagen_url }}" alt="Imagen de {{ producto.titulo }}" class="product-image"
+                                    style="margin: 1em auto; width: 100%; height: auto; max-height: 200px; object-fit: contain;">
+                                <div class="mt-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+    
 
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JS (con Popper.js) -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 
 
 {% endblock %}

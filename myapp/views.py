@@ -21,8 +21,11 @@ from django.db.models import Q
 
 # Create your views here.
 def index(request):
-    info = Task.objects.all().order_by('-user')
-    return render(request , 'index.html', {'info' : info })
+    # Obtener productos de la base de datos
+    productos = Productos.objects.filter()  # Ajusta la consulta según tus necesidades
+    carrito_ids = [producto.id for producto in request.session.get('carrito', [])]
+    
+    return render(request, 'index.html', {'productos': productos, 'carrito_ids': carrito_ids})
 
 #Sign Up - Creacion de usuario.
 def crear_usuario(request):
