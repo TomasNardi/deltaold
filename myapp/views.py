@@ -23,9 +23,9 @@ from django.db.models import Q
 def index(request):
     # Obtener productos de la base de datos
     productos = Productos.objects.filter()  # Ajusta la consulta según tus necesidades
-    carrito_ids = [producto.id for producto in request.session.get('carrito', [])]
     
-    return render(request, 'index.html', {'productos': productos, 'carrito_ids': carrito_ids})
+    return render(request, 'index.html', {'productos': productos})
+
 
 #Sign Up - Creacion de usuario.
 def crear_usuario(request):
