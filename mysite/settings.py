@@ -28,13 +28,13 @@ SECRET_KEY = os.environ.get("SECRET_KEY", default="TestDjango1996")
 DEBUG = "RENDER" not in os.environ
 
 # Desarrollo Debug
-#DEBUG = True
+# DEBUG = True
 
 # Produccion
 ALLOWED_HOSTS = ["deltaold.online", "www.deltaold.online"]
 
 # Desarrollo
-#ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 
 # Agrego la linea para produccion! -> render.com
