@@ -22,6 +22,7 @@ h2 {
 /* Degradado en el banner */
 .home-container-text {
   position: relative;
+  overflow: hidden; /* Evitar que el contenido expandido se desborde */
 }
 
 .home-container-text::after {
@@ -31,7 +32,7 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(transparent 75%, white 100%); /* El degradado comienza al 50% */
+  background: linear-gradient(transparent 75%, white 100%);
   z-index: 1;
 }
 
@@ -41,6 +42,16 @@ h2 {
   width: 100%;
   height: auto;
   object-fit: cover;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out; /* Animación sutil */
+  transform: scaleY(0.95); /* Comprimido ligeramente en la parte inferior */
+  transform-origin: top center; /* Fijamos el origen de la expansión en la parte superior */
+  opacity: 0.9; /* Inicia con opacidad ligeramente reducida */
+}
+
+/* Expande solo la parte inferior cuando la imagen es visible */
+.carousel-item.active .home-container-text img {
+  transform: scaleY(1); /* Expande solo la parte inferior de la imagen */
+  opacity: 1; /* Opacidad completa */
 }
 
 .text-overlay {
@@ -49,13 +60,12 @@ h2 {
   left: 50%;
   transform: translate(-50%, -50%);
   color: black;
-  z-index: 2; /* Para que el texto esté encima del degradado */
+  z-index: 2;
   font-size: 2rem;
   font-weight: bold;
-  text-shadow: 1px 1px 2px white; /* Añade un pequeño sombreado si quieres más legibilidad */
+  text-shadow: 1px 1px 2px white;
 }
 
-/*fin Degradado en el banner */
 
 
 /* Botón flotante */
