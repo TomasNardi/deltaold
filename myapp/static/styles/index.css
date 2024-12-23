@@ -185,7 +185,7 @@ h2 {
 /* Estilo para pantallas de celulares */
 @media (max-width: 768px) {
   .home-div {
-    font-size: 1.1em; /* Tamaño de letra más pequeño en pantallas de celular */
+    font-size: 1.2em; /* Tamaño de letra más pequeño en pantallas de celular */
     font-weight: bold;
 
   }
