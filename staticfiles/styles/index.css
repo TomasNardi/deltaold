@@ -146,7 +146,7 @@ h2 {
 /* Ajuste en pantallas más pequeñas */
 @media (max-width: 768px) {
   .home-container-text .text-overlay {
-    font-size: 1.9em; /* Texto más pequeño */
+    font-size: 1.8em; /* Texto más pequeño */
     font-style: italic; /* Texto en cursiva */
     padding: 5px 10px; /* Menos espacio alrededor del texto */
     white-space: nowrap; /* Hace que todo el texto esté en una sola línea */
