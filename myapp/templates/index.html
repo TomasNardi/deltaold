@@ -46,6 +46,39 @@
 </div>
 
 
+<!-- Div de cartas gradeadas -->
+<div class="container" style="position: relative; height: 200px; overflow: hidden; border-radius: 10px;">
+    <!-- Imagen de fondo -->
+    <a href="gradeadas" style="display: block; width: 100%; height: 100%; position: relative;">
+        <img src="../static/image/index_img/certificada.jpg" alt="Fondo de cartas gradeadas"
+             style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+        <!-- Contenido superpuesto -->
+        <div class="countdown-title"
+        style="display: flex; justify-content: center; align-items: center; font-weight: bold; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 2em; background-color: rgba(0, 0, 0, 0.925); padding: 10px 20px; border-radius: 5px; white-space: nowrap;">
+            CARTAS CERTIFICADAS
+        </div>
+    </a>
+</div>
+
+<!-- CSS para el efecto hover -->
+<style>
+    .container a img:hover {
+        transform: scale(0.95);
+        /* Contracción de la imagen */
+        box-shadow: 0 0 10px rgb(161, 30, 150),
+            0 0 30px rgba(196, 6, 180, 0.966),
+            0 0 50px rgb(255, 255, 255);
+        /* Sombras concéntricas: fuerte en el centro, difusa hacia los bordes */
+        /* Sombras concéntricas: fuerte en el centro, difusa hacia los bordes */
+    }
+
+    .countdown-title:hover {
+        background-color: rgba(129, 38, 214, 0.466); /* Color violeta intenso al hacer hover */
+        transition: background-color 2s ease;
+    }
+</style>
+
+
 
 <!--PRISMATIC INICIO -->
 <div class="container countdown-section">
@@ -137,37 +170,6 @@
 </style>
 
 
-<!-- Div de cartas gradeadas -->
-<div class="container" style="position: relative; height: 200px; overflow: hidden; border-radius: 10px;">
-    <!-- Imagen de fondo -->
-    <a href="gradeadas" style="display: block; width: 100%; height: 100%; position: relative;">
-        <img src="../static/image/index_img/certificada.jpg" alt="Fondo de cartas gradeadas"
-             style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-        <!-- Contenido superpuesto -->
-        <div class="countdown-title"
-        style="display: flex; justify-content: center; align-items: center; font-weight: bold; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 2em; background-color: rgba(0, 0, 0, 0.925); padding: 10px 20px; border-radius: 5px; white-space: nowrap;">
-            CARTAS CERTIFICADAS
-        </div>
-    </a>
-</div>
-
-<!-- CSS para el efecto hover -->
-<style>
-    .container a img:hover {
-        transform: scale(0.95);
-        /* Contracción de la imagen */
-        box-shadow: 0 0 10px rgb(161, 30, 150),
-            0 0 30px rgba(196, 6, 180, 0.966),
-            0 0 50px rgb(255, 255, 255);
-        /* Sombras concéntricas: fuerte en el centro, difusa hacia los bordes */
-        /* Sombras concéntricas: fuerte en el centro, difusa hacia los bordes */
-    }
-
-    .countdown-title:hover {
-        background-color: rgba(129, 38, 214, 0.466); /* Color violeta intenso al hacer hover */
-        transition: background-color 2s ease;
-    }
-</style>
 
 
 <!-- Contenedor principal de los carruseles -->
