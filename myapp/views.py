@@ -65,10 +65,20 @@ def productos(request):
     return render(request, "tienda.html", {'productos': productos, 'carrito_ids': carrito_ids_set})
 
 def single(request):
-    productos = Productos.objects.all()
+    # Filtramos los productos cuyo estado_carta NO comienza con 'Certificada'
+    productos = Productos.objects.exclude(estado_carta__estado__startswith='Certificada')
+    
     carrito_ids = request.session.get('carrito', [])
     carrito_ids_set = set(item['id'] for item in carrito_ids)
+    
     return render(request, "tiendas/singles.html", {'productos': productos, 'carrito_ids': carrito_ids_set})
+
+def certificadas(request):
+    productos = Productos.objects.filter(
+        estado_carta__estado__startswith='Certificada'  
+    )
+    return render(request, "tiendas/gradeada.html", {'productos': productos})
+
 
 def sellado(request):
     productos = Productos.objects.all()
