@@ -158,7 +158,7 @@ h2 {
 }
 
 
-/* ipografia (cartas sellada - Compras - Prod sellados ) Estilo para los divs de home */
+/* Tipografia (cartas sellada - Compras - Prod sellados ) Estilo para los divs de home */
 .image {
   width: 100%;
   height: 100%;
@@ -182,7 +182,7 @@ h2 {
   border-radius: 5px;
   white-space: nowrap;
 }
-/* Estilo para pantallas de celulares - Tipografia (cartas sellada - Compras - Prod sellados )*/
+
 @media (max-width: 768px) {
   .home-div {
     font-size: 1.2em; /* Tamaño de letra más pequeño en pantallas de celular */
