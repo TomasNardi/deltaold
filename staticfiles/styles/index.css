@@ -322,7 +322,7 @@ h2 {
 
 
 /* Estado inicial: los productos son invisibles y están desplazados */
-.producto {
+.producto_js {
   opacity: 0;
   transform: translateY(50px);
   transition: opacity 0.5s ease, transform 0.5s ease;
