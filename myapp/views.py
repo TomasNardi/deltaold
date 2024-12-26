@@ -323,3 +323,7 @@ def buscar_productos(request):
         "carrito_ids": carrito_ids_set  # Productos que están en el carrito
     }
     return render(request, "tiendas/busqueda.html", context)
+
+"""verificado de google"""
+def google_verification(request):
+    return render(request, 'googlec4d88a0b592d5be2.html')
