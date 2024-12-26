@@ -321,6 +321,20 @@ h2 {
 }
 
 
+/* Estado inicial: los productos son invisibles y están desplazados */
+.producto {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Estado visible: los productos aparecen con su posición normal */
+.producto.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 /* Estilos generales */
 .image-venta img {
   height: auto;

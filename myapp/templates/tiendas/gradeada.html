@@ -63,7 +63,7 @@
     <div class="row g-4">
         {% for producto in productos %}
         {% if producto.stock %}
-        <div class="col-6 col-md-4 col-lg-3">
+        <div class="col-6 col-md-4 col-lg-3 producto">
             <div class="card h-100">
                 <div class="card-body text-center image-container"
                     style="background-color: rgba(145, 145, 145, 0.178); border: solid 0.2px rgba(0, 0, 0, 0.568); font-size: 0.8em;">
@@ -139,6 +139,23 @@
 
 <!-- Script para manejar la adición y eliminación del carrito con AJAX -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Script para manejar animacion carga productos -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const productos = document.querySelectorAll('.producto');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        });
+
+        productos.forEach(producto => observer.observe(producto));
+    });
+</script>
 
 <script>
     // Función para actualizar dinámicamente el contador del carrito
