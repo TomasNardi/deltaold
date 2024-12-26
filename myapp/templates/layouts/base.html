@@ -2,49 +2,70 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Favicon -->
-    <link rel="icon" href="{% static 'image/index_img/icono.ico' %}" type="image/x-icon">
 
-    <title>Delta Old</title>
-    <!-- Estilos -->
-    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Favicon -->
+  <link rel="icon" href="{% static 'image/index_img/icono.ico' %}" type="image/x-icon">
 
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Barlow:wght@700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <title>Delta Old</title>
 
-    {% block extra_estilos %}{% endblock %}
+  <!-- Meta Descripción y Autor -->
+  <meta name="description"
+    content="Descubre la mejor colección de cartas de Pokémon en Argentina. Compra, vende o intercambia cartas originales y expansiones. Conviértete en el maestro Pokémon que siempre soñaste.">
+  <meta name="author" content="Tomas Nardi">
+  <meta name="keywords"
+    content="cartas Pokémon, Pokémon TCG, comprar cartas Pokémon, vender cartas Pokémon, intercambiar cartas Pokémon, cartas de colección, cartas Pokémon Argentina, cartas originales, TCG Argentina">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Cartas Pokémon en Argentina | Delta Old">
+  <meta property="og:description"
+    content="Encuentra, compra y vende cartas de Pokémon originales en Argentina. La mejor opción para coleccionistas y fanáticos del TCG.">
+  <meta property="og:url" content="https://deltaold.onrender.com">
+  <meta property="og:type" content="website">
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+  <link rel="preload"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Barlow:wght@700&display=swap"
+    as="style" onload="this.onload=null;this.rel='stylesheet'" />
+
+  {% block extra_estilos %}{% endblock %}
 </head>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark navegacion">
-        <div class="container">
-          <a class="navbar-brand" href="{% url 'index'%}" style="text-shadow: 1px 1px rgba(247, 247, 247, 0.329);"> Pokémon Delta Old</a>
+  <nav class="navbar navbar-expand-lg navbar-dark navegacion">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'index'%}" style="text-shadow: 1px 1px rgba(247, 247, 247, 0.329);"> Pokémon
+        Delta Old</a>
 
-          <button class="navbar-toggler cuadraditos" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'index'%}">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'tienda' %}">Productos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'eventos'%}">DeltaFeria</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="https://www.instagram.com/pkm.delta.old">Instagram</a>
-              </li>
-              <!--
+      <button class="navbar-toggler cuadraditos" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'index'%}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'tienda' %}">Productos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'eventos'%}">DeltaFeria</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.instagram.com/pkm.delta.old">Instagram</a>
+          </li>
+          <!--
               {% if user.is_authenticated %}
               <li  class="nav-item">
                   <a class="nav-link" href="/logout">Logout</a>
@@ -55,17 +76,18 @@
               </li>
               {% endif %}
                -->
-            </ul>
-          </div>
-        </div>
-    </nav>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </header>
 
 <!-- Armo el body content -->
+
 <body>
-    {% block content %}
-    {% endblock %}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  {% block content %}
+  {% endblock %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 <!-- Botón flotante de Carrito -->
@@ -84,11 +106,13 @@
   /* Botón de compras */
   .cart-float {
     position: fixed;
-    bottom: 90px; /* Ajuste para estar encima del botón de WhatsApp */
+    bottom: 90px;
+    /* Ajuste para estar encima del botón de WhatsApp */
     right: 20px;
     background-color: #5f0ae7;
     color: white;
-    width: 60px; /* Igual ancho y alto para mantener el círculo */
+    width: 60px;
+    /* Igual ancho y alto para mantener el círculo */
     height: 60px;
     border-radius: 50%;
     display: flex;
@@ -97,17 +121,24 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
     font-size: 24px;
-    z-index: 1001; /* Asegura que esté por encima de otros elementos */
+    z-index: 1001;
+    /* Asegura que esté por encima de otros elementos */
     transition: background-color 0.4s, transform 0.4s;
-    text-decoration: none; /* Elimina el subrayado */
+    text-decoration: none;
+    /* Elimina el subrayado */
   }
+
   .cart-float a {
-    color: inherit; /* Mantiene el color del enlace igual que el del contenedor */
-    text-decoration: none; /* Asegura que los enlaces no tengan subrayado */
-}
+    color: inherit;
+    /* Mantiene el color del enlace igual que el del contenedor */
+    text-decoration: none;
+    /* Asegura que los enlaces no tengan subrayado */
+  }
+
   .cart-float:hover {
     background-color: #5f0ae7c5;
   }
+
   .cart-float i {
     line-height: 1;
   }
@@ -128,7 +159,8 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    z-index: 1002; /* Asegura que esté por encima del botón */
+    z-index: 1002;
+    /* Asegura que esté por encima del botón */
   }
 </style>
 
@@ -155,4 +187,5 @@
     actualizarContadorCarrito(); // Al cargar la página, actualizamos el contador
   });
 </script>
+
 </html>
