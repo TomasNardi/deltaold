@@ -325,14 +325,29 @@ h2 {
 .producto_js {
   opacity: 0;
   transform: translateY(50px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-/* Estado visible: los productos aparecen con su posición normal */
+/* Estado visible: los productos aparecen con su posición normal con un efecto sutil */
 .producto_js.visible {
   opacity: 1;
   transform: translateY(0);
+  transition: transform 0.8s ease-in-out; /* Se cambia el tiempo y tipo de transición para un efecto más suave */
+  animation: desvanecimiento 0.8s ease-in-out;
 }
+
+/* Animación de desvanecimiento sutil al aparecer */
+@keyframes desvanecimiento {
+  0% {
+    opacity: 0.8;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 
 /* Estilos generales */
