@@ -329,7 +329,7 @@ h2 {
 }
 
 /* Estado visible: los productos aparecen con su posición normal */
-.producto.visible {
+.producto_js.visible {
   opacity: 1;
   transform: translateY(0);
 }
