@@ -153,10 +153,10 @@ body {
 @keyframes shine-effect {
     0% {
         background: 
-            radial-gradient(circle, rgb(255, 255, 255) 6%, transparent 15%), 
-            radial-gradient(circle, rgb(255, 204, 0) 10%, transparent 18%),
-            radial-gradient(circle, rgb(232, 248, 1) 4%, transparent 10%), /* Reflejo pequeño 1 */
-            radial-gradient(circle, rgb(255, 255, 255) 4%, transparent 10%); /* Reflejo pequeño 2 */
+        radial-gradient(circle, rgb(255, 255, 255) 4%, transparent 10%), 
+        radial-gradient(circle, rgb(255, 204, 0) 6%, transparent 12%),
+        radial-gradient(circle, rgb(232, 248, 1) 4%, transparent 10%), /* Reflejo pequeño 1 */
+        radial-gradient(circle, rgb(255, 255, 255) 4%, transparent 10%); /* Reflejo pequeño 2 */
         background-size: 150% 150%, 150% 150%, 75% 75%, 75% 75%; /* Diferentes tamaños */
         background-position: -100% -100%, -100% -100%, -150% -150%, 150% 150%; /* Posiciones iniciales */
         background-repeat: no-repeat;
