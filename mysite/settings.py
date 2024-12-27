@@ -25,16 +25,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY", default="TestDjango1996")
 
 # Produccion
-#DEBUG = "RENDER" not in os.environ
+DEBUG = "RENDER" not in os.environ
 
 # Desarrollo Debug
-DEBUG = True
+# DEBUG = True
 
 # Produccion
-#ALLOWED_HOSTS = ["deltaold.online", "www.deltaold.online"]
+ALLOWED_HOSTS = ["deltaold.online", "www.deltaold.online"]
 
 # Desarrollo
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 
 # Agrego la linea para produccion! -> render.com
@@ -92,7 +92,6 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 
 # Database documentation https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-"""
 
 DATABASES = {
     "default": dj_database_url.config(
@@ -109,6 +108,7 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
