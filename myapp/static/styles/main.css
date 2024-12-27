@@ -149,26 +149,29 @@ body {
     animation: shine-effect 10s ease-in-out infinite; /* Animación más rápida para mayor movimiento */
 }
 
-/* Animación para simular un brillo de sol en movimiento */
+/* Animación para simular un brillo de sol con reflejos adicionales */
 @keyframes shine-effect {
     0% {
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.945) 15%, transparent 30%), 
-                    radial-gradient(circle, rgb(255, 204, 0) 20%, transparent 20%);
-        background-size: 150% 150%, 150% 150%; /* Tamaños similares para ambos gradientes */
-        background-position: -100% -100%, -100% -100%; /* Inicia desde fuera de la carta */
+        background: 
+            radial-gradient(circle, rgb(255, 255, 255) 6%, transparent 15%), 
+            radial-gradient(circle, rgb(255, 204, 0) 10%, transparent 18%),
+            radial-gradient(circle, rgb(232, 248, 1) 4%, transparent 10%), /* Reflejo pequeño 1 */
+            radial-gradient(circle, rgb(255, 255, 255) 4%, transparent 10%); /* Reflejo pequeño 2 */
+        background-size: 150% 150%, 150% 150%, 75% 75%, 75% 75%; /* Diferentes tamaños */
+        background-position: -100% -100%, -100% -100%, -150% -150%, 150% 150%; /* Posiciones iniciales */
         background-repeat: no-repeat;
     }
     25% {
-        background-position: 50% 50%, 50% 50%; /* Movimiento hacia el centro, sincronizado para ambos gradientes */
+        background-position: 50% 50%, 50% 50%, 25% 25%, 75% 75%; /* Movimiento hacia el centro */
     }
     50% {
-        background-position: 100% 100%, 100% 100%; /* Movimiento hacia la parte inferior derecha para ambos */
+        background-position: 100% 100%, 100% 100%, 150% 150%, -50% -50%; /* Movimiento a extremos opuestos */
     }
     75% {
-        background-position: 0% 100%, 0% 100%; /* Movimiento hacia la parte inferior izquierda */
+        background-position: 0% 100%, 0% 100%, -25% 125%, 125% -25%; /* Reflejos en esquinas cruzadas */
     }
     100% {
-        background-position: -100% -100%, -100% -100%; /* Regresa a la posición inicial, ambos gradientes */
+        background-position: -100% -100%, -100% -100%, -150% -150%, 150% 150%; /* Regresa a la posición inicial */
     }
 }
 
@@ -178,13 +181,13 @@ body {
         transform: scale(1) rotateY(0deg); /* Empieza desde 0 grados (sin rotación) */
     }
     25% {
-        transform: scale(1) rotateY(40deg); /* Gira a la derecha 30 grados */
+        transform: scale(1) rotateY(30deg); /* Gira a la derecha 30 grados */
     }
     50% {
         transform: scale(1) rotateY(0deg); /* Vuelve al centro sin rotación */
     }
     75% {
-        transform: scale(1) rotateY(40deg); /* Gira a la izquierda -30 grados */
+        transform: scale(1) rotateY(30deg); /* Gira a la izquierda -30 grados */
     }
     100% {
         transform: scale(1) rotateY(0deg); /* Regresa al centro sin rotación */
@@ -194,5 +197,4 @@ body {
 /* Hover sobre el div reflejo (mismo que la imagen) */
 .reflejo:hover {
     animation: rotate-effect 5s ease-in-out; /* Animación de rotación */
-    transform: scale(1.03); /* Leve escala para que sea más perceptible */
 }
