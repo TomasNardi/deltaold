@@ -51,11 +51,6 @@ body {
 }
 
 
-.image-container img {
-    width: 100%;
-    height: auto;
-}
-
 .image-text {
     position: absolute;
     top: 50%; /* Centrado vertical */
@@ -91,14 +86,113 @@ body {
     position: relative;
 }
 
-/* Imagen del producto */
-.product-image {
-    transition: transform 1s ease, box-shadow 0.3s ease; /* Transición suave */
+.reflejo {
+    position: relative; /* Asegura que los pseudo-elementos se posicionen dentro del contenedor */
+    display: inline-block;
+}
+
+.reflejo img {
+    display: block; /* Asegura que la imagen ocupe todo el espacio disponible */
+    width: 100%; /* Asegura que la imagen se ajuste al contenedor */
+    height: auto; /* Mantiene las proporciones de la imagen */
+    transition: transform 1s ease, box-shadow 0.4s ease; /* Transición suave */
 }
 
 /* Efecto al pasar el cursor (hover) */
 .product-image:hover {
-    transform: scale(0.9); /* Aumenta el tamaño al 120% */
-    box-shadow: 0 9px 19px rgba(0, 0, 0, 0.3); /* Agrega sombra para dar profundidad */
+    transform: scale(0.9); 
+    box-shadow: 4px 9px 20px rgba(0, 0, 0, 0.61); /* Agrega sombra para dar profundidad */
 }
 
+/* Hover sobre el div reflejo */
+/* Efecto al pasar el cursor (hover) */
+.product-image:hover {
+    transform: scale(0.9); /* Escala de la imagen */
+    box-shadow: 4px 9px 20px rgba(0, 0, 0, 0.61); /* Sombra para dar profundidad */
+}
+
+/* Efecto al pasar el cursor (hover) */
+.product-image:hover {
+    transform: scale(0.9); /* Escala de la imagen */
+    box-shadow: 4px 9px 20px rgba(0, 0, 0, 0.61); /* Sombra para dar profundidad */
+}
+
+/* Efecto al pasar el cursor (hover) */
+.product-image:hover {
+    transform: scale(0.9); /* Escala de la imagen */
+    box-shadow: 4px 9px 20px rgba(0, 0, 0, 0.61); /* Sombra para dar profundidad */
+}
+
+/* Efecto al pasar el cursor (hover) */
+.product-image:hover {
+    transform: scale(0.9); /* Escala de la imagen */
+    box-shadow: 4px 9px 20px rgba(0, 0, 0, 0.61); /* Sombra para dar profundidad */
+}
+
+/* Efecto al pasar el cursor (hover) */
+.product-image:hover {
+    transform: scale(0.9); /* Escala de la imagen */
+    box-shadow: 4px 9px 20px rgba(0, 0, 0, 0.61); /* Sombra para dar profundidad */
+}
+
+/* Hover sobre el div reflejo */
+.reflejo:hover::after {
+    content: "";
+    position: absolute;
+    top: 0; /* Poner el reflejo encima de la imagen */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2147483647; /* Máximo valor para z-index */
+    opacity: 0.5; /* Brillo más intenso pero aún sutil */
+    animation: shine-effect 10s ease-in-out infinite; /* Animación más rápida para mayor movimiento */
+}
+
+/* Animación para simular un brillo de sol en movimiento */
+@keyframes shine-effect {
+    0% {
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.945) 15%, transparent 30%), 
+                    radial-gradient(circle, rgb(255, 204, 0) 20%, transparent 20%);
+        background-size: 150% 150%, 150% 150%; /* Tamaños similares para ambos gradientes */
+        background-position: -100% -100%, -100% -100%; /* Inicia desde fuera de la carta */
+        background-repeat: no-repeat;
+    }
+    25% {
+        background-position: 50% 50%, 50% 50%; /* Movimiento hacia el centro, sincronizado para ambos gradientes */
+    }
+    50% {
+        background-position: 100% 100%, 100% 100%; /* Movimiento hacia la parte inferior derecha para ambos */
+    }
+    75% {
+        background-position: 0% 100%, 0% 100%; /* Movimiento hacia la parte inferior izquierda */
+    }
+    100% {
+        background-position: -100% -100%, -100% -100%; /* Regresa a la posición inicial, ambos gradientes */
+    }
+}
+
+/* Animación de rotación lateral con transición suave entre los ángulos */
+@keyframes rotate-effect {
+    0% {
+        transform: scale(1) rotateY(0deg); /* Empieza desde 0 grados (sin rotación) */
+    }
+    25% {
+        transform: scale(1) rotateY(40deg); /* Gira a la derecha 30 grados */
+    }
+    50% {
+        transform: scale(1) rotateY(0deg); /* Vuelve al centro sin rotación */
+    }
+    75% {
+        transform: scale(1) rotateY(40deg); /* Gira a la izquierda -30 grados */
+    }
+    100% {
+        transform: scale(1) rotateY(0deg); /* Regresa al centro sin rotación */
+    }
+}
+
+/* Hover sobre el div reflejo (mismo que la imagen) */
+.reflejo:hover {
+    animation: rotate-effect 5s ease-in-out; /* Animación de rotación */
+    transform: scale(1.03); /* Leve escala para que sea más perceptible */
+}
