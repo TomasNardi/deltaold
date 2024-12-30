@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 from .views import google_verification
 
+
 urlpatterns = [
     # path("tasks/<int:id>/", views.tasks, name="tasks"),
     # path("tasks_form", views.tasks_form, name="tasks_form"),

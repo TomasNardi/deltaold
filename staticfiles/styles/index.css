@@ -284,7 +284,6 @@ h2 {
   }
 }
 
-
 /* Media query para pantallas pequeñas */
 @media (max-width: 768px) {
   .image-venta .image-text {
@@ -296,13 +295,22 @@ h2 {
   font-size: 1.8em;
   font-weight: bold;
   font-family: "Barlow", sans-serif;
+  background-color: #8b1b8f;
+  border-radius: 1%;
+  padding: 0.5em;
+  margin-bottom: 1em;
+  color: white;
+
 }
 
 @media (max-width: 768px) {
   .titulo-productos {
       font-size: 1.1em;
       font-weight: bold;
-
+      background-color: #8b1b8f;
+      border-radius: 1%;
+      padding: 0.5em;
+      color: white;
   }
 }
 

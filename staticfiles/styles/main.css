@@ -109,7 +109,7 @@ body {
 /* Hover sobre el div reflejo */
 .reflejo:hover {
     animation: rotate-effect 4s ease-in-out infinite; /* Animación de rotación */
-    box-shadow: 4px 8px 20px rgba(37, 37, 37, 0.61); /* Agrega sombra para dar profundidad */
+    box-shadow: 0px 8px 20px rgba(37, 37, 37, 0.61); /* Agrega sombra para dar profundidad */
 
 }
 
@@ -125,7 +125,7 @@ body {
     transform: rotate(45deg) scale(0.9); /* Rota la línea en un ángulo de 45 grados */
     pointer-events: none; /* Evita interferir con la interacción */
     animation: shine-effect 2s linear infinite; /* Animación continua */
-    box-shadow: 5px 5px 20px rgba(255, 255, 255, 0.842), 0 0 50px rgba(255, 255, 255, 0.637); /* Efecto de brillo alrededor de la línea */
+    box-shadow:5px 5px 20px rgba(255, 255, 255, 0.842), 0 0 50px rgba(255, 255, 255, 0.637); /* Efecto de brillo alrededor de la línea */
 }
 
 /* Animación de la línea */
