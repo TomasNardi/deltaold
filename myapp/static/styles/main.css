@@ -86,11 +86,6 @@ body {
     position: relative;
 }
 
-.reflejo {
-    position: relative; /* Asegura que los pseudo-elementos se posicionen dentro del contenedor */
-    display: inline-block;
-}
-
 .reflejo img {
     display: block; /* Asegura que la imagen ocupe todo el espacio disponible */
     width: 100%; /* Asegura que la imagen se ajuste al contenedor */
@@ -98,80 +93,48 @@ body {
     transition: transform 1s ease, box-shadow 0.4s ease; /* Transición suave */
 }
 
-/* Efecto al pasar el cursor (hover) */
+/* Achica la imagen y le da sombreado */
 .product-image:hover {
-    transform: scale(0.9); 
-    box-shadow: 4px 9px 20px rgba(0, 0, 0, 0.61); /* Agrega sombra para dar profundidad */
+    box-shadow: 4px 9px 20px rgba(32, 32, 32, 0.61); /* Agrega sombra para dar profundidad */
+}
+
+/* Clase div para aplicar el efecto */
+.reflejo {
+    position: relative; /* Asegura que los pseudo-elementos se posicionen dentro del contenedor */
+    display: inline-block;
+    overflow: hidden; /* Limita el efecto al contenedor */
+    transition: transform 1s ease; /* Transición suave para el contenedor */
 }
 
 /* Hover sobre el div reflejo */
-/* Efecto al pasar el cursor (hover) */
-.product-image:hover {
-    transform: scale(0.9); /* Escala de la imagen */
-    box-shadow: 4px 9px 20px rgba(0, 0, 0, 0.61); /* Sombra para dar profundidad */
+.reflejo:hover {
+    animation: rotate-effect 4s ease-in-out infinite; /* Animación de rotación */
+    box-shadow: 4px 8px 20px rgba(37, 37, 37, 0.61); /* Agrega sombra para dar profundidad */
+
 }
 
-/* Efecto al pasar el cursor (hover) */
-.product-image:hover {
-    transform: scale(0.9); /* Escala de la imagen */
-    box-shadow: 4px 9px 20px rgba(0, 0, 0, 0.61); /* Sombra para dar profundidad */
-}
-
-/* Efecto al pasar el cursor (hover) */
-.product-image:hover {
-    transform: scale(0.9); /* Escala de la imagen */
-    box-shadow: 4px 9px 20px rgba(0, 0, 0, 0.61); /* Sombra para dar profundidad */
-}
-
-/* Efecto al pasar el cursor (hover) */
-.product-image:hover {
-    transform: scale(0.9); /* Escala de la imagen */
-    box-shadow: 4px 9px 20px rgba(0, 0, 0, 0.61); /* Sombra para dar profundidad */
-}
-
-/* Efecto al pasar el cursor (hover) */
-.product-image:hover {
-    transform: scale(0.9); /* Escala de la imagen */
-    box-shadow: 4px 9px 20px rgba(0, 0, 0, 0.61); /* Sombra para dar profundidad */
-}
-
-/* Hover sobre el div reflejo */
+/* Aplicar el efecto sobre la imagen */
 .reflejo:hover::after {
     content: "";
     position: absolute;
-    top: 0; /* Poner el reflejo encima de la imagen */
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 2147483647; /* Máximo valor para z-index */
-    opacity: 0.5; /* Brillo más intenso pero aún sutil */
-    animation: shine-effect 10s ease-in-out infinite; /* Animación más rápida para mayor movimiento */
+    top: -50%; /* Comienza un poco por encima del contenedor */
+    left: -50%; /* Comienza fuera de la carta a la izquierda */
+    width: 200%;
+    height: 1em; /* Línea muy fina */
+    background: rgba(255, 255, 255, 0.616); /* Color y opacidad de la línea */
+    transform: rotate(45deg) scale(0.9); /* Rota la línea en un ángulo de 45 grados */
+    pointer-events: none; /* Evita interferir con la interacción */
+    animation: shine-effect 2s linear infinite; /* Animación continua */
+    box-shadow: 5px 5px 20px rgba(255, 255, 255, 0.842), 0 0 50px rgba(255, 255, 255, 0.637); /* Efecto de brillo alrededor de la línea */
 }
 
-/* Animación para simular un brillo de sol con reflejos adicionales */
+/* Animación de la línea */
 @keyframes shine-effect {
     0% {
-        background: 
-        radial-gradient(circle, rgb(255, 255, 255) 4%, transparent 10%), 
-        radial-gradient(circle, rgb(255, 204, 0) 6%, transparent 12%),
-        radial-gradient(circle, rgb(232, 248, 1) 4%, transparent 10%), /* Reflejo pequeño 1 */
-        radial-gradient(circle, rgb(255, 255, 255) 4%, transparent 10%); /* Reflejo pequeño 2 */
-        background-size: 150% 150%, 150% 150%, 75% 75%, 75% 75%; /* Diferentes tamaños */
-        background-position: -100% -100%, -100% -100%, -150% -150%, 150% 150%; /* Posiciones iniciales */
-        background-repeat: no-repeat;
-    }
-    25% {
-        background-position: 50% 50%, 50% 50%, 25% 25%, 75% 75%; /* Movimiento hacia el centro */
-    }
-    50% {
-        background-position: 100% 100%, 100% 100%, 150% 150%, -50% -50%; /* Movimiento a extremos opuestos */
-    }
-    75% {
-        background-position: 0% 100%, 0% 100%, -25% 125%, 125% -25%; /* Reflejos en esquinas cruzadas */
+        top: -150%; /* Comienza fuera de la carta */
     }
     100% {
-        background-position: -100% -100%, -100% -100%, -150% -150%, 150% 150%; /* Regresa a la posición inicial */
+        top: 200%; /* Pasa por toda la carta */
     }
 }
 
@@ -181,20 +144,15 @@ body {
         transform: scale(1) rotateY(0deg); /* Empieza desde 0 grados (sin rotación) */
     }
     25% {
-        transform: scale(1) rotateY(30deg); /* Gira a la derecha 30 grados */
+        transform: scale(1) rotateY(35deg); /* Gira a la derecha 30 grados */
     }
     50% {
         transform: scale(1) rotateY(0deg); /* Vuelve al centro sin rotación */
     }
     75% {
-        transform: scale(1) rotateY(30deg); /* Gira a la izquierda -30 grados */
+        transform: scale(1) rotateY(35deg); /* Gira a la izquierda -30 grados */
     }
     100% {
         transform: scale(1) rotateY(0deg); /* Regresa al centro sin rotación */
     }
-}
-
-/* Hover sobre el div reflejo (mismo que la imagen) */
-.reflejo:hover {
-    animation: rotate-effect 5s ease-in-out; /* Animación de rotación */
 }
