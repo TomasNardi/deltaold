@@ -327,3 +327,8 @@ def buscar_productos(request):
 """verificado de google"""
 def google_verification(request):
     return render(request, 'googlec4d88a0b592d5be2.html')
+
+
+    
+    
+    
