@@ -21,8 +21,8 @@ from django.db.models import Q
 
 # Create your views here.
 def index(request):
-    # Obtener productos de la base de datos
-    productos = Productos.objects.filter().order_by('-id')  # Ajusta la consulta según tus necesidades
+    # Obtener productos sellados de la base de datos
+    productos = Productos.objects.filter(sellado=True).order_by('-id')
     
     return render(request, 'index.html', {'productos': productos})
 
