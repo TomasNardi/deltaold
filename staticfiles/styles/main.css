@@ -98,6 +98,8 @@ body {
     box-shadow: 4px 9px 20px rgba(32, 32, 32, 0.61); /* Agrega sombra para dar profundidad */
 }
 
+
+
 /* Clase div para aplicar el efecto */
 .reflejo {
     position: relative; /* Asegura que los pseudo-elementos se posicionen dentro del contenedor */
