@@ -56,7 +56,7 @@ def evento(request):
     return render(request, 'eventos.html', {'eventos' : eventos})
     
 def productos(request):
-    productos = Productos.objects.all()
+    productos = Productos.objects.all().order_by('-id')
     carrito_ids = request.session.get('carrito', [])
     
     # Crear un conjunto con los ids de los productos en el carrito para comprobar rápidamente
@@ -81,7 +81,7 @@ def certificadas(request):
 
 
 def sellado(request):
-    productos = Productos.objects.all()
+    productos = Productos.objects.all().order_by('-id')
     carrito_ids = request.session.get('carrito', [])
     carrito_ids_set = set(item['id'] for item in carrito_ids)
     return render(request, "tiendas/sellados.html", {'productos' : productos , 'carrito_ids': carrito_ids_set})

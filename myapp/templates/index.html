@@ -165,7 +165,7 @@
         <div class="col-lg-6" style="position: relative;">
             <div id="carouselExampleIndicators1" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    {% for producto in productos|slice:":2" %}
+                    {% for producto in productos|slice:":4" %}
                     {% if producto.stock %}
                     <div class="carousel-item {% if forloop.first %} active {% endif %}">
                         <div class="card h-100 mb-4 shadow-sm border-0">
@@ -178,8 +178,12 @@
                                 </p>
                                 <div class="mt-3"></div>
                                 <!-- Imagen del producto -->
-                                <img src="{{ producto.imagen_url }}" alt="Imagen de {{ producto.titulo }}"
-                                    class="product-image img-fluid" style="max-height: 200px; object-fit: contain;">
+
+                                <img src="{{ producto.imagen_url }}" alt="Imagen de {{ producto.titulo }}" 
+                                style="max-height: 200px; object-fit: contain; transition: transform 0.5s ease, box-shadow 0.5s ease;"
+                                onmouseover="this.style.transform='scale(0.9)'; this.style.boxShadow='4px 9px 20px rgba(0, 0, 0, 0)';"
+                                onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';"
+                                data-bs-toggle="modal" data-bs-target="#productModal{{ producto.id }}">
                             </div>
                         </div>
                     </div>
