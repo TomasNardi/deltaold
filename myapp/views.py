@@ -22,7 +22,7 @@ from django.db.models import Q
 # Create your views here.
 def index(request):
     # Obtener productos de la base de datos
-    productos = Productos.objects.filter()  # Ajusta la consulta según tus necesidades
+    productos = Productos.objects.filter().order_by('-id')  # Ajusta la consulta según tus necesidades
     
     return render(request, 'index.html', {'productos': productos})
 
@@ -66,7 +66,7 @@ def productos(request):
 
 def single(request):
     # Filtramos los productos cuyo estado_carta NO comienza con 'Certificada'
-    productos = Productos.objects.exclude(estado_carta__estado__startswith='Certificada')
+    productos = Productos.objects.exclude(estado_carta__estado__startswith='Certificada').order_by('-id')
     
     carrito_ids = request.session.get('carrito', [])
     carrito_ids_set = set(item['id'] for item in carrito_ids)
@@ -76,7 +76,7 @@ def single(request):
 def certificadas(request):
     productos = Productos.objects.filter(
         estado_carta__estado__startswith='Certificada'  
-    )
+    ).order_by('-id')
     return render(request, "tiendas/gradeada.html", {'productos': productos})
 
 
