@@ -3,7 +3,12 @@ from .models import Productos, Eventos, EstadoCarta
 
 
 class ProductosAdmin(admin.ModelAdmin):
-    pass
+    list_display = (
+        "titulo",
+        "precio",
+        "stock",
+    )  # Mostrar campos en la lista de productos
+    list_filter = ("titulo",)  # Agregar filtro por título
 
 
 class EventosAdmin(admin.ModelAdmin):
